@@ -89,47 +89,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cik20cxv80001aos6ucclkvoz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-swift单例" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/31/swift单例/" class="article-date">
-  <time datetime="2016-01-31T02:23:32.000Z" itemprop="datePublished">2016-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/31/swift单例/">swift单例和闭包写法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="OC_u91CC_u9762_u5355_u4F8B_uFF1A"><a href="#OC_u91CC_u9762_u5355_u4F8B_uFF1A" class="headerlink" title="OC里面单例："></a>OC里面单例：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> + (instancetype)sharedInstance &#123;</span><br><span class="line">    static id _sharedInstance = nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        _sharedInstance = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> _sharedInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="swift_u5355_u4F8B_u5199_u6CD5_uFF1A"><a href="#swift_u5355_u4F8B_u5199_u6CD5_uFF1A" class="headerlink" title="swift单例写法："></a>swift单例写法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Singleton &#123;</span><br><span class="line">    static <span class="built_in">let</span> sharedInstance = Singleton()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//初始化需要做一些其他操作的情况下</span><br><span class="line">class Singleton &#123;</span><br><span class="line">    static <span class="built_in">let</span> sharedInstance: Singleton = &#123;</span><br><span class="line">        <span class="built_in">let</span> instance = Singleton()</span><br><span class="line">        // setup code</span><br><span class="line">        <span class="built_in">return</span> instance</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="swift_u95ED_u5305_u4F7F_u7528"><a href="#swift_u95ED_u5305_u4F7F_u7528" class="headerlink" title="swift闭包使用"></a>swift闭包使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; (obj:AnyObject!) -&gt; Void <span class="keyword">in</span></span><br><span class="line">     <span class="built_in">let</span> recordCell = obj as! FLMealRecordCell</span><br><span class="line">     recordCell.textLabel?.text = item.data.food_name</span><br><span class="line">     recordCell.detailTextLabel?.text = String(item.data.amount) + item.data.unit_name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="swift_u91CC_u9762_u4F7F_u7528RAC_u76D1_u63A7_u67D0_u4E2A_u5C5E_u6027_u503C_u7684_u60C5_u51B5_u4E0B_uFF0C_u5C5E_u6027_u524D_u9762_u6700_u597D_u52A0_u4E0Adynamic_uFF0C_u5426_u5219_u4F1A_u51FA_u9519"><a href="#swift_u91CC_u9762_u4F7F_u7528RAC_u76D1_u63A7_u67D0_u4E2A_u5C5E_u6027_u503C_u7684_u60C5_u51B5_u4E0B_uFF0C_u5C5E_u6027_u524D_u9762_u6700_u597D_u52A0_u4E0Adynamic_uFF0C_u5426_u5219_u4F1A_u51FA_u9519" class="headerlink" title="swift里面使用RAC监控某个属性值的情况下，属性前面最好加上dynamic，否则会出错"></a>swift里面使用RAC监控某个属性值的情况下，属性前面最好加上dynamic，否则会出错</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RACObserve(self.model.food, keyPath: <span class="string">"name"</span>) .subscribeNext &#123; [weak self] _ <span class="keyword">in</span></span><br><span class="line">    self!.recordView.foodNameLable.text = self!.model.food.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这里food 定义 dynamic var food:***</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例/" data-id="cik20cxvb0002aos6lwkkji00" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cik20ehqz0001bgs6fbkx02aw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cik20cxuu0000aos683u7o4ls" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cik20ehql0000bgs68grc61wu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +159,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -212,10 +172,6 @@
         
           <li>
             <a href="/2016/01/31/swift单例和闭包写法/">swift和OC单例写法</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/31/swift单例/">swift单例和闭包写法</a>
           </li>
         
           <li>
