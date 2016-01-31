@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>swift单例 | Hello</title>
+  <title>swift和OC单例写法 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="OC里面单例：123456789$ + (instancetype)sharedInstance &amp;#123;    static id _sharedInstance = nil;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        _sharedInstance = [[sel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift单例">
+<meta property="og:title" content="swift和OC单例写法">
 <meta property="og:url" content="http://yoursite.com/2016/01/31/swift单例/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-01-31T02:23:32.000Z">
+<meta property="og:description" content="OC里面单例：123456789$ + (instancetype)sharedInstance &amp;#123;    static id _sharedInstance = nil;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        _sharedInstance = [[sel">
+<meta property="og:updated_time" content="2016-01-31T03:33:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift单例">
-<meta name="twitter:description">
+<meta name="twitter:title" content="swift和OC单例写法">
+<meta name="twitter:description" content="OC里面单例：123456789$ + (instancetype)sharedInstance &amp;#123;    static id _sharedInstance = nil;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        _sharedInstance = [[sel">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -74,7 +74,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      swift单例
+      swift和OC单例写法
     </h1>
   
 
@@ -82,11 +82,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="OC_u91CC_u9762_u5355_u4F8B_uFF1A"><a href="#OC_u91CC_u9762_u5355_u4F8B_uFF1A" class="headerlink" title="OC里面单例："></a>OC里面单例：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ + (instancetype)sharedInstance &#123;</span><br><span class="line">    static id _sharedInstance = nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        _sharedInstance = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> _sharedInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="swift_u5355_u4F8B_u5199_u6CD5_uFF1A"><a href="#swift_u5355_u4F8B_u5199_u6CD5_uFF1A" class="headerlink" title="swift单例写法："></a>swift单例写法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ class Singleton &#123;</span><br><span class="line">    static <span class="built_in">let</span> sharedInstance = Singleton()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//初始化需要做一些其他操作的情况下</span><br><span class="line">class Singleton &#123;</span><br><span class="line">    static <span class="built_in">let</span> sharedInstance: Singleton = &#123;</span><br><span class="line">        <span class="built_in">let</span> instance = Singleton()</span><br><span class="line">        // setup code</span><br><span class="line">        <span class="built_in">return</span> instance</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例/" data-id="cik1ze12k000117s6ndgi73ta" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例/" data-id="cik1zqa3k000142s6vkay8hki" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +134,7 @@
       <ul>
         
           <li>
-            <a href="/2016/01/31/swift单例/">swift单例</a>
+            <a href="/2016/01/31/swift单例/">swift和OC单例写法</a>
           </li>
         
           <li>
