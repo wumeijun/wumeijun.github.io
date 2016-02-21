@@ -83,19 +83,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>pod ‘RSBarcodes’, ‘~&gt; 0.1’</li>
-<li>继承 RSScannerViewController</li>
-<li>自定义一个扫码的view，在扫码的中间挖一个透明的view，将自定义的view加在highlightView上<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (void)drawRect:(CGRect)rect</span><br><span class="line">&#123;</span><br><span class="line">    [[[UIColor blackColor] colorWithAlphaComponent:<span class="number">0.5</span>] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(rect);</span><br><span class="line">    CGRect rect1 = CGRectMake((rect.size.width - centerWidth)/<span class="number">2</span>, (rect.size.height - centerWidth)/<span class="number">2</span>, centerWidth, centerWidth);</span><br><span class="line">    CGRect centerRectInstersection = CGRectIntersection(rect1, rect);</span><br><span class="line">    [[UIColor clearColor] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(centerRectInstersection);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>4.扫码过程是使用block进行实现回调<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@weakify(self)</span><br><span class="line">self.barcodesHandler = ^(NSArray *barcodeObjects)&#123;</span><br><span class="line">    @strongify(self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (self.readed == NO) &#123;</span><br><span class="line">        self.readed = YES;</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line"></span><br><span class="line">        	//扫码成功调用</span><br><span class="line">            AVMetadataMachineReadableCodeObject *code = barcodeObjects.first;</span><br><span class="line">            <span class="keyword">if</span> (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(codeScanController:scanedCode:)]) &#123;</span><br><span class="line">                [self.delegate codeScanController:self scanedCode:code.stringValue];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>5.viewDidLoad设置barcodeType<br>  AVMetadataObjectTypeQRCode为二维码type<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	- (void)viewDidLoad &#123;</span><br><span class="line">    //super viewDidLoad 设置barcodeType, 子类需要先设定类型再调用super,这里设置仅扫描条形码</span><br><span class="line">    self.barcodeObjectTypes = @[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019"><a href="#pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019" class="headerlink" title="pod ‘RSBarcodes’, ‘~&gt; 0.1’"></a>pod ‘RSBarcodes’, ‘~&gt; 0.1’</h3><h3 id="u7EE7_u627F_RSScannerViewController"><a href="#u7EE7_u627F_RSScannerViewController" class="headerlink" title="继承 RSScannerViewController"></a>继承 RSScannerViewController</h3><h3 id="u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A"><a href="#u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A" class="headerlink" title="自定义一个扫码的view，在扫码的中间挖一个透明的view，将自定义的view加在highlightView上"></a>自定义一个扫码的view，在扫码的中间挖一个透明的view，将自定义的view加在highlightView上</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (void)drawRect:(CGRect)rect</span><br><span class="line">&#123;</span><br><span class="line">    [[[UIColor blackColor] colorWithAlphaComponent:<span class="number">0.5</span>] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(rect);</span><br><span class="line">    CGRect rect1 = CGRectMake((rect.size.width - centerWidth)/<span class="number">2</span>, (rect.size.height - centerWidth)/<span class="number">2</span>, centerWidth, centerWidth);</span><br><span class="line">    CGRect centerRectInstersection = CGRectIntersection(rect1, rect);</span><br><span class="line">    [[UIColor clearColor] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(centerRectInstersection);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03"><a href="#u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03" class="headerlink" title="扫码过程是使用block进行实现回调"></a>扫码过程是使用block进行实现回调</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@weakify(self)</span><br><span class="line">self.barcodesHandler = ^(NSArray *barcodeObjects)&#123;</span><br><span class="line">    @strongify(self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (self.readed == NO) &#123;</span><br><span class="line">        self.readed = YES;</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line"></span><br><span class="line">        	//扫码成功调用</span><br><span class="line">            AVMetadataMachineReadableCodeObject *code = barcodeObjects.first;</span><br><span class="line">            <span class="keyword">if</span> (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(codeScanController:scanedCode:)]) &#123;</span><br><span class="line">                [self.delegate codeScanController:self scanedCode:code.stringValue];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="viewDidLoad_u8BBE_u7F6EbarcodeType"><a href="#viewDidLoad_u8BBE_u7F6EbarcodeType" class="headerlink" title="viewDidLoad设置barcodeType"></a>viewDidLoad设置barcodeType</h3><pre><code>AVMetadataObjectTypeQRCode为二维码type
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	- (void)viewDidLoad &#123;</span><br><span class="line">    //super viewDidLoad 设置barcodeType, 子类需要先设定类型再调用super,这里设置仅扫描条形码</span><br><span class="line">    self.barcodeObjectTypes = @[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cikwc03mr0004m2s6489gtm1d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cikwc7c2e0003n3s6rup1ibe7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,43 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cikwc03mn0003m2s6f53okd39" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-iOS控件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/01/iOS控件/" class="article-date">
-  <time datetime="2016-02-01T07:23:20.000Z" itemprop="datePublished">2016-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/01/iOS控件/">iOS控件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/01/iOS控件/" data-id="cikwc03mm0002m2s6sr8e8e0z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cikwc7c2c0002n3s6s40k34e9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cikwc03mk0001m2s6ubh9aqnj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cikwc7c2a0001n3s6n89qzn7l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cikwc03m60000m2s6p0f2me95" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cikwc7c1w0000n3s69e9mb8ok" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +239,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -296,10 +256,6 @@
         
           <li>
             <a href="/2016/02/03/iOS动画/">iOS动画</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/01/iOS控件/">iOS控件</a>
           </li>
         
           <li>
