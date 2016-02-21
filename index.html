@@ -61,6 +61,124 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS使用RSBarcodes开发扫码功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/" class="article-date">
+  <time datetime="2016-02-21T08:43:03.000Z" itemprop="datePublished">2016-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/">iOS使用RSBarcodes开发扫码功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>pod ‘RSBarcodes’, ‘~&gt; 0.1’</li>
+<li>继承 RSScannerViewController</li>
+<li>自定义一个扫码的view，在扫码的中间挖一个透明的view，将自定义的view加在highlightView上<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (void)drawRect:(CGRect)rect</span><br><span class="line">&#123;</span><br><span class="line">    [[[UIColor blackColor] colorWithAlphaComponent:<span class="number">0.5</span>] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(rect);</span><br><span class="line">    CGRect rect1 = CGRectMake((rect.size.width - centerWidth)/<span class="number">2</span>, (rect.size.height - centerWidth)/<span class="number">2</span>, centerWidth, centerWidth);</span><br><span class="line">    CGRect centerRectInstersection = CGRectIntersection(rect1, rect);</span><br><span class="line">    [[UIColor clearColor] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(centerRectInstersection);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.扫码过程是使用block进行实现回调<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@weakify(self)</span><br><span class="line">self.barcodesHandler = ^(NSArray *barcodeObjects)&#123;</span><br><span class="line">    @strongify(self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (self.readed == NO) &#123;</span><br><span class="line">        self.readed = YES;</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line"></span><br><span class="line">        	//扫码成功调用</span><br><span class="line">            AVMetadataMachineReadableCodeObject *code = barcodeObjects.first;</span><br><span class="line">            <span class="keyword">if</span> (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(codeScanController:scanedCode:)]) &#123;</span><br><span class="line">                [self.delegate codeScanController:self scanedCode:code.stringValue];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>5.viewDidLoad设置barcodeType<br>  AVMetadataObjectTypeQRCode为二维码type<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	- (void)viewDidLoad &#123;</span><br><span class="line">    //super viewDidLoad 设置barcodeType, 子类需要先设定类型再调用super,这里设置仅扫描条形码</span><br><span class="line">    self.barcodeObjectTypes = @[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cikwbu6ds0004jks67hh5hawf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/03/iOS动画/" class="article-date">
+  <time datetime="2016-02-03T02:39:20.000Z" itemprop="datePublished">2016-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/03/iOS动画/">iOS动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B"><a href="#u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B" class="headerlink" title="通过代码块使用UIKit动画"></a>通过代码块使用UIKit动画</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)animation &#123;</span><br><span class="line"></span><br><span class="line">	[UIView animateWithDuration:<span class="number">1</span></span><br><span class="line">						 delay:<span class="number">0</span></span><br><span class="line">						 options:UIViewAnimationOptionTransitionFlipFromLeft</span><br><span class="line">						 animations:^&#123;</span><br><span class="line"></span><br><span class="line">						 &#125; completion:^(BOOL finish)&#123;</span><br><span class="line">						 &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###使用Core Animation对象来实现动画</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cikwbu6dr0003jks6dzmvta8f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS控件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/01/iOS控件/" class="article-date">
+  <time datetime="2016-02-01T07:23:20.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/iOS控件/">iOS控件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/01/iOS控件/" data-id="cikwbu6dp0002jks64uex0tqu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-swift单例和闭包写法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/31/swift单例和闭包写法/" class="article-date">
@@ -91,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cik20i33p0001ems62qpsv0nq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cikwbu6dm0001jks6cj8u9qgc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cik20i33b0000ems6f41qwi8z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cikwbu6d80000jks6ozyv8qup" class="article-share-link">Share</a>
       
       
     </footer>
@@ -161,7 +279,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -171,6 +289,18 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/">iOS使用RSBarcodes开发扫码功能</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/03/iOS动画/">iOS动画</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/01/iOS控件/">iOS控件</a>
+          </li>
         
           <li>
             <a href="/2016/01/31/swift单例和闭包写法/">swift单例和闭包写法</a>
