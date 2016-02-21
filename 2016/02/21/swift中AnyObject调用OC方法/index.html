@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS动画 | Hello</title>
+  <title>swift中AnyObject调用OC方法 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通过代码块使用UIKit动画12345678910- (void)animation &amp;#123;	[UIView animateWithDuration:1						 delay:0						 options:UIViewAnimationOptionTransitionFlipFromLeft						 animations:^&amp;#123;						 &amp;#125; completion">
+  <meta name="description" content="AnyObject调用OC方法，是一次隐式展开optional，通过optional特性决定AnyObject类型的对象是否被调用
+可使用 if let name = myObject.length {
+}来判断
+//Swiftlet userDefaults = NSUserDefaults.standardUserDefaults()let last : AnyObject? = userDe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS动画">
-<meta property="og:url" content="http://yoursite.com/2016/02/03/iOS动画/index.html">
+<meta property="og:title" content="swift中AnyObject调用OC方法">
+<meta property="og:url" content="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="通过代码块使用UIKit动画12345678910- (void)animation &amp;#123;	[UIView animateWithDuration:1						 delay:0						 options:UIViewAnimationOptionTransitionFlipFromLeft						 animations:^&amp;#123;						 &amp;#125; completion">
-<meta property="og:updated_time" content="2016-02-03T02:39:51.000Z">
+<meta property="og:description" content="AnyObject调用OC方法，是一次隐式展开optional，通过optional特性决定AnyObject类型的对象是否被调用
+可使用 if let name = myObject.length {
+}来判断
+//Swiftlet userDefaults = NSUserDefaults.standardUserDefaults()let last : AnyObject? = userDe">
+<meta property="og:updated_time" content="2016-02-21T09:17:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS动画">
-<meta name="twitter:description" content="通过代码块使用UIKit动画12345678910- (void)animation &amp;#123;	[UIView animateWithDuration:1						 delay:0						 options:UIViewAnimationOptionTransitionFlipFromLeft						 animations:^&amp;#123;						 &amp;#125; completion">
+<meta name="twitter:title" content="swift中AnyObject调用OC方法">
+<meta name="twitter:description" content="AnyObject调用OC方法，是一次隐式展开optional，通过optional特性决定AnyObject类型的对象是否被调用
+可使用 if let name = myObject.length {
+}来判断
+//Swiftlet userDefaults = NSUserDefaults.standardUserDefaults()let last : AnyObject? = userDe">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -60,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-iOS动画" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-swift中AnyObject调用OC方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/02/03/iOS动画/" class="article-date">
-  <time datetime="2016-02-03T02:39:20.000Z" itemprop="datePublished">2016-02-03</time>
+    <a href="/2016/02/21/swift中AnyObject调用OC方法/" class="article-date">
+  <time datetime="2016-02-21T09:16:07.000Z" itemprop="datePublished">2016-02-21</time>
 </a>
     
   </div>
@@ -74,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      iOS动画
+      swift中AnyObject调用OC方法
     </h1>
   
 
@@ -82,13 +91,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B"><a href="#u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B" class="headerlink" title="通过代码块使用UIKit动画"></a>通过代码块使用UIKit动画</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)animation &#123;</span><br><span class="line"></span><br><span class="line">	[UIView animateWithDuration:<span class="number">1</span></span><br><span class="line">						 delay:<span class="number">0</span></span><br><span class="line">						 options:UIViewAnimationOptionTransitionFlipFromLeft</span><br><span class="line">						 animations:^&#123;</span><br><span class="line"></span><br><span class="line">						 &#125; completion:^(BOOL finish)&#123;</span><br><span class="line">						 &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###使用Core Animation对象来实现动画</p>
+        <p>AnyObject调用OC方法，是一次隐式展开optional，通过optional特性决定AnyObject类型的对象是否被调用</p>
+<p>可使用 if let name = myObject.length {</p>
+<p>}来判断</p>
+<p>//Swift<br>let userDefaults = NSUserDefaults.standardUserDefaults()<br>let last : AnyObject? = userDefaults.objectForKey(“last”)<br>if let date = last as? NSDate {<br>    print(“”)<br>}<br>如果确定对象的类型 并确定不是nil 使用as强转</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cikwccz5c0003ohs6n80gipk5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cikwccz5a0002ohs6vuwbv5us" class="article-share-link">Share</a>
       
       
     </footer>
@@ -97,19 +108,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          iOS使用RSBarcodes开发扫码功能
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/01/31/swift单例和闭包写法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">swift单例和闭包写法</div>
+      <div class="article-nav-title">iOS使用RSBarcodes开发扫码功能</div>
     </a>
   
 </nav>
