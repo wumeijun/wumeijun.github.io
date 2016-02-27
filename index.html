@@ -61,6 +61,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-实现NSCoding协议进行数据存储" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/27/实现NSCoding协议进行数据存储/" class="article-date">
+  <time datetime="2016-02-27T02:09:19.000Z" itemprop="datePublished">2016-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/27/实现NSCoding协议进行数据存储/">实现NSCoding协议进行数据存储</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>本周做项目时候缓存自定义的对象会报“Attempt to set a non-property-list object”这个错误
+
+一查发现oc可以对 NSDate, NSNumber, NSString, NSArray, or NSDictionary对象进行“编码/解码”的操作
+
+对于自定义的对象，需要实现NSCoding协议
+
+附上问题解决链接：http://stackoverflow.com/questions/19720611/attempt-to-set-a-non-property-list-object-as-an-nsuserdefaults
+</code></pre><p>###自定义的对象实现NSCoding协议<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;class FLMealAddRecordDisplayItem: NSObject,NSCoding &#123;&#10;&#10;    var data:RECORD_EATING_DATA!&#10;    var sectionName:String!&#10;    var tabSelectIndex:Int!&#10;&#10;    required init(data:RECORD_EATING_DATA, sectionName:String,tabSelectIndex:Int) &#123;&#10;    &#9;super.init()&#10;        self.data = data&#10;        self.sectionName = sectionName&#10;        self.tabSelectIndex = tabSelectIndex&#10;    &#125;&#10;&#10;    //&#32534;&#30721;&#26041;&#27861;&#65306;&#23558;&#25968;&#25454;&#32534;&#30721;&#25104;&#21487;&#20197;&#20889;&#20837;&#26412;&#22320;&#30340;&#29366;&#24577;&#10;    func encodeWithCoder(aCoder: NSCoder) &#123;&#10;        aCoder.encodeObject(self.data, forKey: &#34;data&#34;)&#10;        aCoder.encodeObject(self.sectionName, forKey: &#34;sectionName&#34;)&#10;        aCoder.encodeObject(self.tabSelectIndex, forKey: &#34;tabSelectIndex&#34;)&#10;    &#125;&#10;&#10;&#10;    //MARK: &#35299;&#30721;&#26041;&#27861;&#10;    required init(coder aDecoder: NSCoder) &#123;&#10;        self.data = aDecoder.decodeObjectForKey(&#34;data&#34;) as! RECORD_EATING_DATA&#10;        self.sectionName = aDecoder.decodeObjectForKey(&#34;sectionName&#34;) as! String&#10;        self.tabSelectIndex = aDecoder.decodeObjectForKey(&#34;tabSelectIndex&#34;) as! Int&#10;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730"><a href="#u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730" class="headerlink" title="归档存放这些对象的数组，存入本地"></a>归档存放这些对象的数组，存入本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];&#10;[[NSUserDefaults standardUserDefaults] setObject:data forKey:timeType];</span><br></pre></td></tr></table></figure>
+<h3 id="u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E"><a href="#u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E" class="headerlink" title="反归档，取出数据"></a>反归档，取出数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;NSArray *array = [[NSArray alloc] init];&#10;NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:timeType];&#10;NSArray *cacheArray = [NSKeyedUnarchiver unarchiveObjectWithData:cacheData];&#10;if(cacheArray.count &#62; 0 ) &#123;&#10;    array = cacheArray;&#10;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议进行数据存储/" data-id="cil4iek680001shs6nocjtzez" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-先present后再push的页面返回" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/21/先present后再push的页面返回/" class="article-date">
@@ -88,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cikwcoahc0001ugs6hyxtpl7t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cil4iek6b0002shs684jaleo1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cikwcoahg0003ugs62251kz29" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cil4iek6e0004shs6xeoje2mm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cikwcoahk0005ugs68rxur6i5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cil4iek6j0006shs6wvzkm0bs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cikwcoahi0004ugs6sf54y8ed" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cil4iek6h0005shs6g3cnj68c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cikwcoahf0002ugs6vax4z45t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cil4iek6d0003shs63v1skqwh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cikwcoagy0000ugs6zjvxyigv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cil4iek5v0000shs6t6qpvrhc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +362,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -326,6 +372,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/27/实现NSCoding协议进行数据存储/">实现NSCoding协议进行数据存储</a>
+          </li>
         
           <li>
             <a href="/2016/02/21/先present后再push的页面返回/">先present后再push的页面返回</a>
@@ -341,10 +391,6 @@
         
           <li>
             <a href="/2016/02/03/iOS动画/">iOS动画</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/31/swift单例和闭包写法/">swift单例和闭包写法</a>
           </li>
         
       </ul>
