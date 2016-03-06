@@ -90,21 +90,22 @@
 </ul>
 <p>使用定时器加字符串的绘制方法模拟写字的过程</p>
 <ul>
-<li><p>定义一个定时器和初始化数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&#34;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;,&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#34;;&#10;&#10;self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每次取出要显示的字符串，依次递增</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentString&#10;&#123;&#10;    static  NSInteger m = 1;&#10;    if (m &#60;= self.title.length) &#123;&#10;&#10;        self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];&#10;        m++;&#10;        //&#35843;&#29992;drawRect:(CGRect)rect&#26041;&#27861;&#36827;&#34892;&#32472;&#21046;&#10;        [self setNeedsDisplay];&#10;    &#125;else &#123;&#10;        [self.timer invalidate];&#10;        self.timer = nil;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawRect:(CGRect)rect &#123;&#10;&#10;    //&#33719;&#21462;&#19978;&#19979;&#25991;&#10;    CGContextRef ctxxx = UIGraphicsGetCurrentContext();&#10;    //&#28165;&#38500;&#30011;&#24067;&#10;    CGContextClearRect(ctxxx, rect);&#10;&#10;    UIFont *font = [UIFont systemFontOfSize:17];&#10;    UIColor *color = [UIColor redColor];&#10;    NSDictionary *dic = @&#123;&#10;                          NSForegroundColorAttributeName:color,&#10;                          NSFontAttributeName:font&#10;                          &#125;;&#10;&#10;    [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>定义一个定时器和初始化数据</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&#34;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;,&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#34;;&#10;&#10;self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每次取出要显示的字符串，依次递增</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentString&#10;&#123;&#10;    static  NSInteger m = 1;&#10;    if (m &#60;= self.title.length) &#123;&#10;&#10;        self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];&#10;        m++;&#10;        //&#35843;&#29992;drawRect:(CGRect)rect&#26041;&#27861;&#36827;&#34892;&#32472;&#21046;&#10;        [self setNeedsDisplay];&#10;    &#125;else &#123;&#10;        [self.timer invalidate];&#10;        self.timer = nil;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawRect:(CGRect)rect &#123;&#10;&#10;    //&#33719;&#21462;&#19978;&#19979;&#25991;&#10;    CGContextRef ctxxx = UIGraphicsGetCurrentContext();&#10;    //&#28165;&#38500;&#30011;&#24067;&#10;    CGContextClearRect(ctxxx, rect);&#10;&#10;    UIFont *font = [UIFont systemFontOfSize:17];&#10;    UIColor *color = [UIColor redColor];&#10;    NSDictionary *dic = @&#123;&#10;                          NSForegroundColorAttributeName:color,&#10;                          NSFontAttributeName:font&#10;                          &#125;;&#10;&#10;    [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd5iu00001lvs6406lxqfh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd6h660001mfs605flkspq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilgd5iu20002lvs6vrvc9p3o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilgd6h690002mfs69ssmdmoj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilgd5iu40003lvs6bnctj98f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilgd6h6a0003mfs694bf50cu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilgd5iu70005lvs6ew7h8b62" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilgd6h6f0005mfs6cxw61gdw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -267,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilgd5iub0007lvs6r7e7t61r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilgd6h6j0007mfs6lmo7u80k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilgd5iua0006lvs65uqh7lw2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilgd6h6h0006mfs6pd6rjepg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilgd5iu50004lvs69dfwpxtk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilgd6h6c0004mfs6xzn4tlq2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilgd5itm0000lvs6rkdb46cu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilgd6h5t0000mfs64e9sn8hu" class="article-share-link">Share</a>
       
       
     </footer>

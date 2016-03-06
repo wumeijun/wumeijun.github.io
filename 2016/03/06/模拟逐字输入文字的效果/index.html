@@ -13,7 +13,8 @@ drawInRect:withAttributes:
 使用定时器加字符串的绘制方法模拟写字的过程
 
 定义一个定时器和初始化数据
-1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#21834">
+
+1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#2183">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模拟逐字输入文字的效果">
 <meta property="og:url" content="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/index.html">
@@ -26,8 +27,9 @@ drawInRect:withAttributes:
 使用定时器加字符串的绘制方法模拟写字的过程
 
 定义一个定时器和初始化数据
-1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#21834">
-<meta property="og:updated_time" content="2016-03-06T09:35:25.000Z">
+
+1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#2183">
+<meta property="og:updated_time" content="2016-03-06T09:36:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模拟逐字输入文字的效果">
 <meta name="twitter:description" content="iOS7以后NSString类增加了2个绘制字符串对象的方法
@@ -38,7 +40,8 @@ drawInRect:withAttributes:
 使用定时器加字符串的绘制方法模拟写字的过程
 
 定义一个定时器和初始化数据
-1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#21834">
+
+1self.title = @&amp;#34;&amp;#25105;&amp;#26159;&amp;#19968;&amp;#26465;&amp;#40060;&amp;#21834;&amp;#2183">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -113,21 +116,22 @@ drawInRect:withAttributes:
 </ul>
 <p>使用定时器加字符串的绘制方法模拟写字的过程</p>
 <ul>
-<li><p>定义一个定时器和初始化数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&#34;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;,&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#34;;&#10;&#10;self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每次取出要显示的字符串，依次递增</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentString&#10;&#123;&#10;    static  NSInteger m = 1;&#10;    if (m &#60;= self.title.length) &#123;&#10;&#10;        self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];&#10;        m++;&#10;        //&#35843;&#29992;drawRect:(CGRect)rect&#26041;&#27861;&#36827;&#34892;&#32472;&#21046;&#10;        [self setNeedsDisplay];&#10;    &#125;else &#123;&#10;        [self.timer invalidate];&#10;        self.timer = nil;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawRect:(CGRect)rect &#123;&#10;&#10;    //&#33719;&#21462;&#19978;&#19979;&#25991;&#10;    CGContextRef ctxxx = UIGraphicsGetCurrentContext();&#10;    //&#28165;&#38500;&#30011;&#24067;&#10;    CGContextClearRect(ctxxx, rect);&#10;&#10;    UIFont *font = [UIFont systemFontOfSize:17];&#10;    UIColor *color = [UIColor redColor];&#10;    NSDictionary *dic = @&#123;&#10;                          NSForegroundColorAttributeName:color,&#10;                          NSFontAttributeName:font&#10;                          &#125;;&#10;&#10;    [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>定义一个定时器和初始化数据</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&#34;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;,&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#65292;&#25105;&#26159;&#19968;&#26465;&#40060;&#21834;&#21834;&#21834;&#21834;&#65292;&#21487;&#29233;&#30340;&#40060;&#21834;&#34;;&#10;&#10;self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每次取出要显示的字符串，依次递增</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentString&#10;&#123;&#10;    static  NSInteger m = 1;&#10;    if (m &#60;= self.title.length) &#123;&#10;&#10;        self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];&#10;        m++;&#10;        //&#35843;&#29992;drawRect:(CGRect)rect&#26041;&#27861;&#36827;&#34892;&#32472;&#21046;&#10;        [self setNeedsDisplay];&#10;    &#125;else &#123;&#10;        [self.timer invalidate];&#10;        self.timer = nil;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawRect:(CGRect)rect &#123;&#10;&#10;    //&#33719;&#21462;&#19978;&#19979;&#25991;&#10;    CGContextRef ctxxx = UIGraphicsGetCurrentContext();&#10;    //&#28165;&#38500;&#30011;&#24067;&#10;    CGContextClearRect(ctxxx, rect);&#10;&#10;    UIFont *font = [UIFont systemFontOfSize:17];&#10;    UIColor *color = [UIColor redColor];&#10;    NSDictionary *dic = @&#123;&#10;                          NSForegroundColorAttributeName:color,&#10;                          NSFontAttributeName:font&#10;                          &#125;;&#10;&#10;    [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];&#10;&#10;&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd5iu00001lvs6406lxqfh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd6h660001mfs605flkspq" class="article-share-link">Share</a>
       
       
     </footer>
