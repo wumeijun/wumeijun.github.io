@@ -5,16 +5,40 @@
   
   <title>模拟逐字输入文字的效果 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="iOS7以后NSString类增加了2个绘制字符串对象的方法
+
+drawAtPoint:withAttributes:
+drawInRect:withAttributes:
+
+使用定时器加字符串的绘制方法模拟写字的过程
+
+定义一个定时器和初始化数据
+ self.title = @”我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊,我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模拟逐字输入文字的效果">
 <meta property="og:url" content="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-03-06T09:30:35.000Z">
+<meta property="og:description" content="iOS7以后NSString类增加了2个绘制字符串对象的方法
+
+drawAtPoint:withAttributes:
+drawInRect:withAttributes:
+
+使用定时器加字符串的绘制方法模拟写字的过程
+
+定义一个定时器和初始化数据
+ self.title = @”我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊,我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可">
+<meta property="og:updated_time" content="2016-03-06T09:32:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模拟逐字输入文字的效果">
-<meta name="twitter:description">
+<meta name="twitter:description" content="iOS7以后NSString类增加了2个绘制字符串对象的方法
+
+drawAtPoint:withAttributes:
+drawInRect:withAttributes:
+
+使用定时器加字符串的绘制方法模拟写字的过程
+
+定义一个定时器和初始化数据
+ self.title = @”我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊,我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -82,11 +106,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>iOS7以后NSString类增加了2个绘制字符串对象的方法</p>
+<ul>
+<li>drawAtPoint:withAttributes:</li>
+<li>drawInRect:withAttributes:</li>
+</ul>
+<p>使用定时器加字符串的绘制方法模拟写字的过程</p>
+<ul>
+<li><p>定义一个定时器和初始化数据</p>
+<p> self.title = @”我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊,我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊”;</p>
+<p> self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</p>
+</li>
+<li><p>每次取出要显示的字符串，依次递增</p>
+</li>
+<li><p>(void)updateCurrentString<br>{<br>  static  NSInteger m = 1;<br>  if (m &lt;= self.title.length) {</p>
+<pre><code>self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];
+m++;
+//调用drawRect:(CGRect)rect方法进行绘制
+[self setNeedsDisplay];
+</code></pre><p>  }else {</p>
+<pre><code>[self.timer invalidate];
+self.timer = nil;
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</p>
+</li>
+<li><p>(void)drawRect:(CGRect)rect {</p>
+<p>  //获取上下文<br>  CGContextRef ctxxx = UIGraphicsGetCurrentContext();<br>  //清除画布<br>  CGContextClearRect(ctxxx, rect);</p>
+<p>  UIFont <em>font = [UIFont systemFontOfSize:17];<br>  UIColor </em>color = [UIColor redColor];<br>  NSDictionary *dic = @{</p>
+<pre><code>NSForegroundColorAttributeName:color,
+NSFontAttributeName:font
+};
+</code></pre><p>  [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];</p>
+</li>
+</ul>
+<p>}</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgczgil0001k0s6vfncpv19" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd23en0001lbs6vd11pr28" class="article-share-link">Share</a>
       
       
     </footer>

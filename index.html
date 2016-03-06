@@ -83,11 +83,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>iOS7以后NSString类增加了2个绘制字符串对象的方法</p>
+<ul>
+<li>drawAtPoint:withAttributes:</li>
+<li>drawInRect:withAttributes:</li>
+</ul>
+<p>使用定时器加字符串的绘制方法模拟写字的过程</p>
+<ul>
+<li><p>定义一个定时器和初始化数据</p>
+<p> self.title = @”我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊,我是一条鱼啊啊啊啊，可爱的鱼啊，我是一条鱼啊啊啊啊，可爱的鱼啊”;</p>
+<p> self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</p>
+</li>
+<li><p>每次取出要显示的字符串，依次递增</p>
+</li>
+<li><p>(void)updateCurrentString<br>{<br>  static  NSInteger m = 1;<br>  if (m &lt;= self.title.length) {</p>
+<pre><code>self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];
+m++;
+//调用drawRect:(CGRect)rect方法进行绘制
+[self setNeedsDisplay];
+</code></pre><p>  }else {</p>
+<pre><code>[self.timer invalidate];
+self.timer = nil;
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>每调用之前先清除画布，否则会出现抖动<br>第一个显示第一个字，第二次显示头2字，视觉上造成是逐字显示一样</p>
+</li>
+<li><p>(void)drawRect:(CGRect)rect {</p>
+<p>  //获取上下文<br>  CGContextRef ctxxx = UIGraphicsGetCurrentContext();<br>  //清除画布<br>  CGContextClearRect(ctxxx, rect);</p>
+<p>  UIFont <em>font = [UIFont systemFontOfSize:17];<br>  UIColor </em>color = [UIColor redColor];<br>  NSDictionary *dic = @{</p>
+<pre><code>NSForegroundColorAttributeName:color,
+NSFontAttributeName:font
+};
+</code></pre><p>  [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];</p>
+</li>
+</ul>
+<p>}</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgczgil0001k0s6vfncpv19" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilgd23en0001lbs6vd11pr28" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilgczgis0002k0s69qhrsmwm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilgd23eq0002lbs6859kvmcv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilgczgiu0003k0s65v17ju90" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilgd23es0003lbs6a20te737" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilgczgiy0005k0s6cl3bczzn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilgd23ew0005lbs613zgs2ht" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilgczgj10007k0s6kriuqxbl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilgd23ez0007lbs6awlha5h3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilgczgiz0006k0s6gpacqmxs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilgd23ey0006lbs6clcq95gm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilgczgiw0004k0s6lshjtewz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilgd23et0004lbs601zhzq2v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilgczghv0000k0s6edth30x9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilgd23e90000lbs6qea1df4o" class="article-share-link">Share</a>
       
       
     </footer>
