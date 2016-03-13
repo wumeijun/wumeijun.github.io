@@ -5,45 +5,18 @@
   
   <title>使用CALayer中的mask属性绘图和动画 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. CALaye主要是了为了内容展示和动画操作，但CALayer无法响应事件
-mask:图层蒙版，决定了父图层的部分可见区域
- @property(strong) CALayer *mask
- mask图层的范围为父图层的可见区域
-
-
-
-使用mask属性练习绘制圆后整个圆旋转
-
-1&amp;#10;- (instancetype)initWithFrame:(CGRect)frame&amp;#10;&amp;#123">
+  <meta name="description" content="1. CALaye&amp;#x4E3B;&amp;#x8981;&amp;#x662F;&amp;#x4E86;&amp;#x4E3A;&amp;#x4E86;&amp;#x5185;&amp;#x5BB9;&amp;#x5C55;&amp;#x793A;&amp;#x548C;&amp;#x52A8;&amp;#x753B;&amp;#x64CD;&amp;#x4F5C;&amp;#xFF0C;&amp;#x4F46;CALayer&amp;#x65E0;&amp;#x6CD5;&amp;#x54CD;&amp;#x5E94;&amp;#x4E8B;&amp;#x4EF6;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用CALayer中的mask属性绘图和动画">
 <meta property="og:url" content="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="1. CALaye主要是了为了内容展示和动画操作，但CALayer无法响应事件
-mask:图层蒙版，决定了父图层的部分可见区域
- @property(strong) CALayer *mask
- mask图层的范围为父图层的可见区域
-
-
-
-使用mask属性练习绘制圆后整个圆旋转
-
-1&amp;#10;- (instancetype)initWithFrame:(CGRect)frame&amp;#10;&amp;#123">
-<meta property="og:image" content="http://yoursite.com/image/circle.gif">
-<meta property="og:image" content="http://yoursite.com/image/circle.gif">
-<meta property="og:updated_time" content="2016-03-13T05:28:14.000Z">
+<meta property="og:description" content="1. CALaye&amp;#x4E3B;&amp;#x8981;&amp;#x662F;&amp;#x4E86;&amp;#x4E3A;&amp;#x4E86;&amp;#x5185;&amp;#x5BB9;&amp;#x5C55;&amp;#x793A;&amp;#x548C;&amp;#x52A8;&amp;#x753B;&amp;#x64CD;&amp;#x4F5C;&amp;#xFF0C;&amp;#x4F46;CALayer&amp;#x65E0;&amp;#x6CD5;&amp;#x54CD;&amp;#x5E94;&amp;#x4E8B;&amp;#x4EF6;">
+<meta property="og:image" content="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/circle.gif">
+<meta property="og:image" content="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/circle.gif">
+<meta property="og:updated_time" content="2016-03-13T05:30:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用CALayer中的mask属性绘图和动画">
-<meta name="twitter:description" content="1. CALaye主要是了为了内容展示和动画操作，但CALayer无法响应事件
-mask:图层蒙版，决定了父图层的部分可见区域
- @property(strong) CALayer *mask
- mask图层的范围为父图层的可见区域
-
-
-
-使用mask属性练习绘制圆后整个圆旋转
-
-1&amp;#10;- (instancetype)initWithFrame:(CGRect)frame&amp;#10;&amp;#123">
+<meta name="twitter:description" content="1. CALaye&amp;#x4E3B;&amp;#x8981;&amp;#x662F;&amp;#x4E86;&amp;#x4E3A;&amp;#x4E86;&amp;#x5185;&amp;#x5BB9;&amp;#x5C55;&amp;#x793A;&amp;#x548C;&amp;#x52A8;&amp;#x753B;&amp;#x64CD;&amp;#x4F5C;&amp;#xFF0C;&amp;#x4F46;CALayer&amp;#x65E0;&amp;#x6CD5;&amp;#x54CD;&amp;#x5E94;&amp;#x4E8B;&amp;#x4EF6;">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -111,27 +84,104 @@ mask:图层蒙版，决定了父图层的部分可见区域
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-_CALaye_u4E3B_u8981_u662F_u4E86_u4E3A_u4E86_u5185_u5BB9_u5C55_u793A_u548C_u52A8_u753B_u64CD_u4F5C_uFF0C_u4F46CALayer_u65E0_u6CD5_u54CD_u5E94_u4E8B_u4EF6"><a href="#1-_CALaye_u4E3B_u8981_u662F_u4E86_u4E3A_u4E86_u5185_u5BB9_u5C55_u793A_u548C_u52A8_u753B_u64CD_u4F5C_uFF0C_u4F46CALayer_u65E0_u6CD5_u54CD_u5E94_u4E8B_u4EF6" class="headerlink" title="1. CALaye主要是了为了内容展示和动画操作，但CALayer无法响应事件"></a>1. CALaye主要是了为了内容展示和动画操作，但CALayer无法响应事件</h4><ul>
-<li><p>mask:图层蒙版，决定了父图层的部分可见区域</p>
+        <h4 id="1-_CALaye_u4E3B_u8981_u662F_u4E86_u4E3A_u4E86_u5185_u5BB9_u5C55_u793A_u548C_u52A8_u753B_u64CD_u4F5C_uFF0C_u4F46CALayer_u65E0_u6CD5_u54CD_u5E94_u4E8B_u4EF6"><a href="#1-_CALaye_u4E3B_u8981_u662F_u4E86_u4E3A_u4E86_u5185_u5BB9_u5C55_u793A_u548C_u52A8_u753B_u64CD_u4F5C_uFF0C_u4F46CALayer_u65E0_u6CD5_u54CD_u5E94_u4E8B_u4EF6" class="headerlink" title="1. CALaye&#x4E3B;&#x8981;&#x662F;&#x4E86;&#x4E3A;&#x4E86;&#x5185;&#x5BB9;&#x5C55;&#x793A;&#x548C;&#x52A8;&#x753B;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;CALayer&#x65E0;&#x6CD5;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;"></a>1. CALaye&#x4E3B;&#x8981;&#x662F;&#x4E86;&#x4E3A;&#x4E86;&#x5185;&#x5BB9;&#x5C55;&#x793A;&#x548C;&#x52A8;&#x753B;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;CALayer&#x65E0;&#x6CD5;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;</h4><ul>
+<li><p>mask:&#x56FE;&#x5C42;&#x8499;&#x7248;&#xFF0C;&#x51B3;&#x5B9A;&#x4E86;&#x7236;&#x56FE;&#x5C42;&#x7684;&#x90E8;&#x5206;&#x53EF;&#x89C1;&#x533A;&#x57DF;</p>
 <p> @property(strong) CALayer *mask</p>
-<p> mask图层的范围为父图层的可见区域</p>
+<p> mask&#x56FE;&#x5C42;&#x7684;&#x8303;&#x56F4;&#x4E3A;&#x7236;&#x56FE;&#x5C42;&#x7684;&#x53EF;&#x89C1;&#x533A;&#x57DF;</p>
 </li>
 </ul>
 <ul>
-<li>使用mask属性练习绘制圆后整个圆旋转</li>
+<li>&#x4F7F;&#x7528;mask&#x5C5E;&#x6027;&#x7EC3;&#x4E60;&#x7ED8;&#x5236;&#x5706;&#x540E;&#x6574;&#x4E2A;&#x5706;&#x65CB;&#x8F6C;</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;- (instancetype)initWithFrame:(CGRect)frame&#10;&#123;&#10;    self = [super initWithFrame:frame];&#10;    if (self) &#123;&#10;        self.perAngle = M_PI/60;&#10;        self.centerPoint = CGPointMake(150, 150);&#10;        self.cirleLayer = [CAShapeLayer layer];&#10;        self.cirleLayer.frame = CGRectMake(50, 50, 300, 300);&#10;        self.cirleLayer.fillColor = [UIColor redColor].CGColor;&#10;        self.cirleLayer.strokeColor = [UIColor whiteColor].CGColor;&#10;&#10;        self.path = [[UIBezierPath alloc] init];&#10;        [self calculatePoints:self.path];&#10;        self.cirleLayer.path = self.path.CGPath;&#10;&#10;        //&#32472;&#21046;mask&#22270;&#23618;&#65292;&#20026;cirleLayer&#35201;&#26174;&#31034;&#30340;&#21306;&#22495;&#10;        self.mask = [CAShapeLayer layer];&#10;        self.mask.fillColor = nil; //nil&#20195;&#34920;&#30011;&#22278;&#29615;&#65292;&#35774;&#32622;&#20102;color&#23601;&#26159;&#30011;&#22278;&#10;        self.mask.lineWidth = 10;&#10;        self.mask.strokeColor = [UIColor blackColor].CGColor;&#10;        self.cirleLayer.mask = self.mask;&#10;        [self.layer addSublayer:self.cirleLayer];&#10;        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrent) userInfo:nil repeats:YES];&#10;    &#125;&#10;    return self;&#10;&#125;&#10;&#10;//&#30011;&#22278;&#30340;&#21322;&#24452;&#10;- (void)calculatePoints:(UIBezierPath *)path &#123;&#10;&#10;    CGFloat height = 0;&#10;    CGFloat width = 0;&#10;    CGPoint point;&#10;    for (int i= 1; i &#60;= 120; i++) &#123;&#10;        height = 150 * sin(self.perAngle * i);&#10;        width = 150 * cos(self.perAngle * i);&#10;        point = CGPointMake(self.centerPoint.x - width, self.centerPoint.y - height);&#10;        [path moveToPoint:self.centerPoint];&#10;        [path addLineToPoint:point];&#10;    &#125;&#10;&#125;&#10;&#10;- (void)updateCurrent&#10;&#123;&#10;&#10;    static CGFloat endAngle = 0;&#10;    endAngle += self.perAngle;&#10;    if (endAngle &#62;= M_PI*2) &#123;&#10;        [self.timer invalidate];&#10;        [self startAnimation];&#10;    &#125;else &#123;&#10;        self.maskPath = [UIBezierPath bezierPathWithArcCenter:self.centerPoint radius:150 startAngle:0 endAngle:endAngle clockwise:true];&#10;        self.mask.path = self.maskPath.CGPath;&#10;    &#125;&#10;&#125;&#10;&#10;- (void)startAnimation&#10;&#123;&#10;    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@&#34;transform.rotation.z&#34;];&#10;    rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];&#10;    rotateAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];&#10;    rotateAnimation.repeatCount = MAXFLOAT;&#10;    rotateAnimation.duration = 80;&#10;    [self.cirleLayer addAnimation:rotateAnimation forKey:@&#34;rotate&#34;];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.perAngle = M_PI/60;
+        self.centerPoint = CGPointMake(150, 150);
+        self.cirleLayer = [CAShapeLayer layer];
+        self.cirleLayer.frame = CGRectMake(50, 50, 300, 300);
+        self.cirleLayer.fillColor = [UIColor redColor].CGColor;
+        self.cirleLayer.strokeColor = [UIColor whiteColor].CGColor;
+
+        self.path = [[UIBezierPath alloc] init];
+        [self calculatePoints:self.path];
+        self.cirleLayer.path = self.path.CGPath;
+
+        //&#x7ED8;&#x5236;mask&#x56FE;&#x5C42;&#xFF0C;&#x4E3A;cirleLayer&#x8981;&#x663E;&#x793A;&#x7684;&#x533A;&#x57DF;
+        self.mask = [CAShapeLayer layer];
+        self.mask.fillColor = nil; //nil&#x4EE3;&#x8868;&#x753B;&#x5706;&#x73AF;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E86;color&#x5C31;&#x662F;&#x753B;&#x5706;
+        self.mask.lineWidth = 10;
+        self.mask.strokeColor = [UIColor blackColor].CGColor;
+        self.cirleLayer.mask = self.mask;
+        [self.layer addSublayer:self.cirleLayer];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrent) userInfo:nil repeats:YES];
+    }
+    return self;
+}
+
+//&#x753B;&#x5706;&#x7684;&#x534A;&#x5F84;
+- (void)calculatePoints:(UIBezierPath *)path {
+
+    CGFloat height = 0;
+    CGFloat width = 0;
+    CGPoint point;
+    for (int i= 1; i &lt;= 120; i++) {
+        height = 150 * sin(self.perAngle * i);
+        width = 150 * cos(self.perAngle * i);
+        point = CGPointMake(self.centerPoint.x - width, self.centerPoint.y - height);
+        [path moveToPoint:self.centerPoint];
+        [path addLineToPoint:point];
+    }
+}
+
+- (void)updateCurrent
+{
+
+    static CGFloat endAngle = 0;
+    endAngle += self.perAngle;
+    if (endAngle &gt;= M_PI*2) {
+        [self.timer invalidate];
+        [self startAnimation];
+    }else {
+        self.maskPath = [UIBezierPath bezierPathWithArcCenter:self.centerPoint radius:150 startAngle:0 endAngle:endAngle clockwise:true];
+        self.mask.path = self.maskPath.CGPath;
+    }
+}
+
+- (void)startAnimation
+{
+    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+    rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    rotateAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
+    rotateAnimation.repeatCount = MAXFLOAT;
+    rotateAnimation.duration = 80;
+    [self.cirleLayer addAnimation:rotateAnimation forKey:@&quot;rotate&quot;];
+}</span><br></pre></td></tr></table></figure>
 <ul>
-<li>效果展示(gif展示效果有点奇怪，具体效果可在模拟器上看)<br><img src="/image/circle.gif" style="width: 300px;"></li>
+<li>&#x6548;&#x679C;&#x5C55;&#x793A;(gif&#x5C55;&#x793A;&#x6548;&#x679C;&#x6709;&#x70B9;&#x5947;&#x602A;&#xFF0C;&#x5177;&#x4F53;&#x6548;&#x679C;&#x53EF;&#x5728;&#x6A21;&#x62DF;&#x5668;&#x4E0A;&#x770B;)<br><img src="/2016/03/13/&#x4F7F;&#x7528;CALayer&#x4E2D;&#x7684;mask&#x5C5E;&#x6027;&#x7ED8;&#x56FE;&#x548C;&#x52A8;&#x753B;/circle.gif" style="width: 300px;"></li>
 </ul>
-<p><img src="/image/circle.gif" alt="circle"></p>
+<p><img src="/2016/03/13/&#x4F7F;&#x7528;CALayer&#x4E2D;&#x7684;mask&#x5C5E;&#x6027;&#x7ED8;&#x56FE;&#x548C;&#x52A8;&#x753B;/circle.gif" alt="circle"></p>
 <hr>
-<h4 id="2-__u5C5E_u6027_u52A8_u753B_u7ED3_u675F_u4E4B_u540E_u7684delegate_u65B9_u6CD5_u91CC_u83B7_u53D6_u505A_u52A8_u753B_u7684_u5BF9_u8C61"><a href="#2-__u5C5E_u6027_u52A8_u753B_u7ED3_u675F_u4E4B_u540E_u7684delegate_u65B9_u6CD5_u91CC_u83B7_u53D6_u505A_u52A8_u753B_u7684_u5BF9_u8C61" class="headerlink" title="2. 属性动画结束之后的delegate方法里获取做动画的对象"></a>2. 属性动画结束之后的delegate方法里获取做动画的对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.&#10;  groupAnnimation.delegate = self;&#10;  [groupAnnimation setValue:groupLayer forKey:@&#34;animationName&#34;];&#10;&#10;2.&#22312;animationDidStop&#33719;&#21462;&#10;    - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag&#10;&#123;&#10;    //&#33719;&#21462;&#21040;&#35843;&#29992;&#21160;&#30011;&#30340;layer&#10;    CATextLayer *groupLayer = [anim valueForKey:@&#34;animationName&#34;];&#10;    [groupLayer removeFromSuperlayer];&#10;    //&#21478;&#22806;&#19968;&#20010;&#21160;&#30011;&#30340;&#24320;&#22987;&#10;    [self updateCurrentString];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-__u5C5E_u6027_u52A8_u753B_u7ED3_u675F_u4E4B_u540E_u7684delegate_u65B9_u6CD5_u91CC_u83B7_u53D6_u505A_u52A8_u753B_u7684_u5BF9_u8C61"><a href="#2-__u5C5E_u6027_u52A8_u753B_u7ED3_u675F_u4E4B_u540E_u7684delegate_u65B9_u6CD5_u91CC_u83B7_u53D6_u505A_u52A8_u753B_u7684_u5BF9_u8C61" class="headerlink" title="2. &#x5C5E;&#x6027;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x7684;delegate&#x65B9;&#x6CD5;&#x91CC;&#x83B7;&#x53D6;&#x505A;&#x52A8;&#x753B;&#x7684;&#x5BF9;&#x8C61;"></a>2. &#x5C5E;&#x6027;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x7684;delegate&#x65B9;&#x6CD5;&#x91CC;&#x83B7;&#x53D6;&#x505A;&#x52A8;&#x753B;&#x7684;&#x5BF9;&#x8C61;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.
+  groupAnnimation.delegate = self;
+  [groupAnnimation setValue:groupLayer forKey:@&quot;animationName&quot;];
+
+2.&#x5728;animationDidStop&#x83B7;&#x53D6;
+    - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    //&#x83B7;&#x53D6;&#x5230;&#x8C03;&#x7528;&#x52A8;&#x753B;&#x7684;layer
+    CATextLayer *groupLayer = [anim valueForKey:@&quot;animationName&quot;];
+    [groupLayer removeFromSuperlayer];
+    //&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x5F00;&#x59CB;
+    [self updateCurrentString];
+}</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cilq4ej3m0004qxs6bp2u84zk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cilq4hgv10004ris655mg7otg" class="article-share-link">Share</a>
       
       
     </footer>

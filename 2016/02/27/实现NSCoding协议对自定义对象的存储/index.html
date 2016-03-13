@@ -5,34 +5,16 @@
   
   <title>实现NSCoding协议对自定义对象的存储 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本周做项目时候缓存自定义的对象会报“Attempt to set a non-property-list object”这个错误
-
-一查发现oc可以对 NSDate, NSNumber, NSString, NSArray, or NSDictionary对象进行“编码/解码”的操作
-
-对于自定义的对象，需要实现NSCoding协议
-
-附上问题解决链接：http://stackoverflow.c">
+  <meta name="description" content="&amp;#x672C;&amp;#x5468;&amp;#x505A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#x5019;&amp;#x7F13;&amp;#x5B58;&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x7684;&amp;#x5BF9;&amp;#x8C61;&amp;#x4F1A;&amp;#x62A5;&amp;#x201C;Attempt to set a non-property-list object&amp;#x201D;&amp;#x8FD9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现NSCoding协议对自定义对象的存储">
 <meta property="og:url" content="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="本周做项目时候缓存自定义的对象会报“Attempt to set a non-property-list object”这个错误
-
-一查发现oc可以对 NSDate, NSNumber, NSString, NSArray, or NSDictionary对象进行“编码/解码”的操作
-
-对于自定义的对象，需要实现NSCoding协议
-
-附上问题解决链接：http://stackoverflow.c">
+<meta property="og:description" content="&amp;#x672C;&amp;#x5468;&amp;#x505A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#x5019;&amp;#x7F13;&amp;#x5B58;&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x7684;&amp;#x5BF9;&amp;#x8C61;&amp;#x4F1A;&amp;#x62A5;&amp;#x201C;Attempt to set a non-property-list object&amp;#x201D;&amp;#x8FD9">
 <meta property="og:updated_time" content="2016-02-27T02:34:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现NSCoding协议对自定义对象的存储">
-<meta name="twitter:description" content="本周做项目时候缓存自定义的对象会报“Attempt to set a non-property-list object”这个错误
-
-一查发现oc可以对 NSDate, NSNumber, NSString, NSArray, or NSDictionary对象进行“编码/解码”的操作
-
-对于自定义的对象，需要实现NSCoding协议
-
-附上问题解决链接：http://stackoverflow.c">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x5468;&amp;#x505A;&amp;#x9879;&amp;#x76EE;&amp;#x65F6;&amp;#x5019;&amp;#x7F13;&amp;#x5B58;&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x7684;&amp;#x5BF9;&amp;#x8C61;&amp;#x4F1A;&amp;#x62A5;&amp;#x201C;Attempt to set a non-property-list object&amp;#x201D;&amp;#x8FD9">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -100,21 +82,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>本周做项目时候缓存自定义的对象会报“Attempt to set a non-property-list object”这个错误
+        <pre><code>&#x672C;&#x5468;&#x505A;&#x9879;&#x76EE;&#x65F6;&#x5019;&#x7F13;&#x5B58;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x62A5;&#x201C;Attempt to set a non-property-list object&#x201D;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;
 
-一查发现oc可以对 NSDate, NSNumber, NSString, NSArray, or NSDictionary对象进行“编码/解码”的操作
+&#x4E00;&#x67E5;&#x53D1;&#x73B0;oc&#x53EF;&#x4EE5;&#x5BF9; NSDate, NSNumber, NSString, NSArray, or NSDictionary&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x201C;&#x7F16;&#x7801;/&#x89E3;&#x7801;&#x201D;&#x7684;&#x64CD;&#x4F5C;
 
-对于自定义的对象，需要实现NSCoding协议
+&#x5BF9;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;
 
-附上问题解决链接：http://stackoverflow.com/questions/19720611/attempt-to-set-a-non-property-list-object-as-an-nsuserdefaults
-</code></pre><h3 id="u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE"><a href="#u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE" class="headerlink" title="自定义的对象实现NSCoding协议"></a>自定义的对象实现NSCoding协议</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class FLMealAddRecordDisplayItem: NSObject,NSCoding &#123;&#10;&#10;    var data:RECORD_EATING_DATA!&#10;    var sectionName:String!&#10;    var tabSelectIndex:Int!&#10;&#10;    required init(data:RECORD_EATING_DATA, sectionName:String,tabSelectIndex:Int) &#123;&#10;    &#9;super.init()&#10;        self.data = data&#10;        self.sectionName = sectionName&#10;        self.tabSelectIndex = tabSelectIndex&#10;    &#125;&#10;&#10;    //&#32534;&#30721;&#26041;&#27861;&#65306;&#23558;&#25968;&#25454;&#32534;&#30721;&#25104;&#21487;&#20197;&#20889;&#20837;&#26412;&#22320;&#30340;&#29366;&#24577;&#10;    func encodeWithCoder(aCoder: NSCoder) &#123;&#10;        aCoder.encodeObject(self.data, forKey: &#34;data&#34;)&#10;        aCoder.encodeObject(self.sectionName, forKey: &#34;sectionName&#34;)&#10;        aCoder.encodeObject(self.tabSelectIndex, forKey: &#34;tabSelectIndex&#34;)&#10;    &#125;&#10;&#10;&#10;    //MARK: &#35299;&#30721;&#26041;&#27861;&#10;    required init(coder aDecoder: NSCoder) &#123;&#10;        self.data = aDecoder.decodeObjectForKey(&#34;data&#34;) as! RECORD_EATING_DATA&#10;        self.sectionName = aDecoder.decodeObjectForKey(&#34;sectionName&#34;) as! String&#10;        self.tabSelectIndex = aDecoder.decodeObjectForKey(&#34;tabSelectIndex&#34;) as! Int&#10;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730"><a href="#u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730" class="headerlink" title="归档存放这些对象的数组，存入本地"></a>归档存放这些对象的数组，存入本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];&#10;[[NSUserDefaults standardUserDefaults] setObject:data forKey:timeType];</span><br></pre></td></tr></table></figure>
-<h3 id="u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E"><a href="#u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E" class="headerlink" title="反归档，取出数据"></a>反归档，取出数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;NSArray *array = [[NSArray alloc] init];&#10;NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:timeType];&#10;NSArray *cacheArray = [NSKeyedUnarchiver unarchiveObjectWithData:cacheData];&#10;if(cacheArray.count &#62; 0 ) &#123;&#10;    array = cacheArray;&#10;&#125;</span><br></pre></td></tr></table></figure>
+&#x9644;&#x4E0A;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x94FE;&#x63A5;&#xFF1A;http://stackoverflow.com/questions/19720611/attempt-to-set-a-non-property-list-object-as-an-nsuserdefaults
+</code></pre><h3 id="u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE"><a href="#u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class FLMealAddRecordDisplayItem: NSObject,NSCoding {
+
+    var data:RECORD_EATING_DATA!
+    var sectionName:String!
+    var tabSelectIndex:Int!
+
+    required init(data:RECORD_EATING_DATA, sectionName:String,tabSelectIndex:Int) {
+    	super.init()
+        self.data = data
+        self.sectionName = sectionName
+        self.tabSelectIndex = tabSelectIndex
+    }
+
+    //&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#xFF1A;&#x5C06;&#x6570;&#x636E;&#x7F16;&#x7801;&#x6210;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x672C;&#x5730;&#x7684;&#x72B6;&#x6001;
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.data, forKey: &quot;data&quot;)
+        aCoder.encodeObject(self.sectionName, forKey: &quot;sectionName&quot;)
+        aCoder.encodeObject(self.tabSelectIndex, forKey: &quot;tabSelectIndex&quot;)
+    }
+
+
+    //MARK: &#x89E3;&#x7801;&#x65B9;&#x6CD5;
+    required init(coder aDecoder: NSCoder) {
+        self.data = aDecoder.decodeObjectForKey(&quot;data&quot;) as! RECORD_EATING_DATA
+        self.sectionName = aDecoder.decodeObjectForKey(&quot;sectionName&quot;) as! String
+        self.tabSelectIndex = aDecoder.decodeObjectForKey(&quot;tabSelectIndex&quot;) as! Int
+
+    }
+}</span><br></pre></td></tr></table></figure>
+<h3 id="u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730"><a href="#u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730" class="headerlink" title="&#x5F52;&#x6863;&#x5B58;&#x653E;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x5165;&#x672C;&#x5730;"></a>&#x5F52;&#x6863;&#x5B58;&#x653E;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x5165;&#x672C;&#x5730;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+[[NSUserDefaults standardUserDefaults] setObject:data forKey:timeType];</span><br></pre></td></tr></table></figure>
+<h3 id="u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E"><a href="#u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E" class="headerlink" title="&#x53CD;&#x5F52;&#x6863;&#xFF0C;&#x53D6;&#x51FA;&#x6570;&#x636E;"></a>&#x53CD;&#x5F52;&#x6863;&#xFF0C;&#x53D6;&#x51FA;&#x6570;&#x636E;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
+NSArray *array = [[NSArray alloc] init];
+NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:timeType];
+NSArray *cacheArray = [NSKeyedUnarchiver unarchiveObjectWithData:cacheData];
+if(cacheArray.count &gt; 0 ) {
+    array = cacheArray;
+}</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilq4ej3j0002qxs6l96bnoet" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilq4hguy0002ris6g2k4dk0k" class="article-share-link">Share</a>
       
       
     </footer>
