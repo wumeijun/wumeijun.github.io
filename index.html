@@ -94,7 +94,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;- (instancetype)initWithFrame:(CGRect)frame&#10;&#123;&#10;    self = [super initWithFrame:frame];&#10;    if (self) &#123;&#10;        self.perAngle = M_PI/60;&#10;        self.centerPoint = CGPointMake(150, 150);&#10;        self.cirleLayer = [CAShapeLayer layer];&#10;        self.cirleLayer.frame = CGRectMake(50, 50, 300, 300);&#10;        self.cirleLayer.fillColor = [UIColor redColor].CGColor;&#10;        self.cirleLayer.strokeColor = [UIColor whiteColor].CGColor;&#10;&#10;        self.path = [[UIBezierPath alloc] init];&#10;        [self calculatePoints:self.path];&#10;        self.cirleLayer.path = self.path.CGPath;&#10;&#10;        //&#32472;&#21046;mask&#22270;&#23618;&#65292;&#20026;cirleLayer&#35201;&#26174;&#31034;&#30340;&#21306;&#22495;&#10;        self.mask = [CAShapeLayer layer];&#10;        self.mask.fillColor = nil; //nil&#20195;&#34920;&#30011;&#22278;&#29615;&#65292;&#35774;&#32622;&#20102;color&#23601;&#26159;&#30011;&#22278;&#10;        self.mask.lineWidth = 10;&#10;        self.mask.strokeColor = [UIColor blackColor].CGColor;&#10;        self.cirleLayer.mask = self.mask;&#10;        [self.layer addSublayer:self.cirleLayer];&#10;        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrent) userInfo:nil repeats:YES];&#10;    &#125;&#10;    return self;&#10;&#125;&#10;&#10;//&#30011;&#22278;&#30340;&#21322;&#24452;&#10;- (void)calculatePoints:(UIBezierPath *)path &#123;&#10;&#10;    CGFloat height = 0;&#10;    CGFloat width = 0;&#10;    CGPoint point;&#10;    for (int i= 1; i &#60;= 120; i++) &#123;&#10;        height = 150 * sin(self.perAngle * i);&#10;        width = 150 * cos(self.perAngle * i);&#10;        point = CGPointMake(self.centerPoint.x - width, self.centerPoint.y - height);&#10;        [path moveToPoint:self.centerPoint];&#10;        [path addLineToPoint:point];&#10;    &#125;&#10;&#125;&#10;&#10;- (void)updateCurrent&#10;&#123;&#10;&#10;    static CGFloat endAngle = 0;&#10;    endAngle += self.perAngle;&#10;    if (endAngle &#62;= M_PI*2) &#123;&#10;        [self.timer invalidate];&#10;        [self startAnimation];&#10;    &#125;else &#123;&#10;        self.maskPath = [UIBezierPath bezierPathWithArcCenter:self.centerPoint radius:150 startAngle:0 endAngle:endAngle clockwise:true];&#10;        self.mask.path = self.maskPath.CGPath;&#10;    &#125;&#10;&#125;&#10;&#10;- (void)startAnimation&#10;&#123;&#10;    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@&#34;transform.rotation.z&#34;];&#10;    rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];&#10;    rotateAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];&#10;    rotateAnimation.repeatCount = MAXFLOAT;&#10;    rotateAnimation.duration = 80;&#10;    [self.cirleLayer addAnimation:rotateAnimation forKey:@&#34;rotate&#34;];&#10;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>效果展示(gif展示效果有点奇怪，具体效果可在模拟器上看)</li>
+<li>效果展示(gif展示效果有点奇怪，具体效果可在模拟器上看)<br><img src="/image/circle.gif" style="width: 300px;"></li>
 </ul>
 <p><img src="/image/circle.gif" alt="circle"></p>
 <hr>
@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cilq4dbnq0004qds6q3ec3ogt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cilq4ej3m0004qxs6bp2u84zk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilq4dbnk0001qds617p73gb2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilq4ej3g0001qxs61mgogbih" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilq4dbnn0002qds6f0u6kw1d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilq4ej3j0002qxs6l96bnoet" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilq4dbno0003qds6ib6yh50u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilq4ej3l0003qxs6l5zvto03" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilq4dbnw0006qds65bqobwnn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilq4ej3p0006qxs6agjkbu2s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilq4dbo00008qds6k7q6hmgm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilq4ej3u0008qxs6yhbhxlkg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilq4dbny0007qds6trwk6j7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilq4ej3s0007qxs6c9tnko52" class="article-share-link">Share</a>
       
       
     </footer>
@@ -398,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilq4dbnu0005qds6rihph8im" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilq4ej3o0005qxs6v6awvh3f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilq4dbn20000qds6hu4imgtd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilq4ej310000qxs6v0ogwa3h" class="article-share-link">Share</a>
       
       
     </footer>
