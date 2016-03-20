@@ -61,6 +61,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CAAnimation-常用的keyPath整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/20/CAAnimation-常用的keyPath整理/" class="article-date">
+  <time datetime="2016-03-20T04:44:52.000Z" itemprop="datePublished">2016-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/20/CAAnimation-常用的keyPath整理/">CAAnimation 常用的keyPath整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CAAnimation__u5E38_u7528_u7684keyPath"><a href="#CAAnimation__u5E38_u7528_u7684keyPath" class="headerlink" title="CAAnimation &#x5E38;&#x7528;&#x7684;keyPath"></a>CAAnimation &#x5E38;&#x7528;&#x7684;keyPath</h3><p>[CAAnimation animationWithKeyPath: @&#x201D;key&#x201D;]</p>
+<ul>
+<li>formValue&#x548C;toValue &#x90FD;&#x662F;float&#x7C7B;&#x578B;</li>
+</ul>
+<p>transform.scale &#x7F29;&#x653E;<br>transform.scale.x &#x5BBD;&#x7684;&#x7F29;&#x653E;<br>transform.scale.y &#x9AD8;&#x7684;&#x7F29;&#x653E;<br>transform.rotation.z &#x7C7B;&#x4F3C;&#x7ED5;&#x7740;UIView&#x7684;&#x4E2D;&#x5FC3;&#x65CB;&#x8F6C;&#xFF0C;&#x5E73;&#x9762;&#x56FE;&#x7684;&#x65CB;&#x8F6C;<br>opacity &#x900F;&#x660E;&#x5EA6;&#x53D8;&#x6362;</p>
+<p>strokeStart&#x548C;strokeEnd &#x8DEF;&#x5F84;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x5C3E;<br>     1 keyPath = strokeStart  fromValue = 0&#xFF0C;toValue = 1<br>     &#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;<br>     2 keyPath = strokeStart  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0<br>     &#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;<br>     3 keyPath = strokeEnd  fromValue = 0&#xFF0C;toValue = 1<br>     &#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;<br>     4 keyPath = strokeEnd  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0<br>     &#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">annimation.fromValue = [NSNumber numberWithFloat:0.0];
+annimation.toValue = [NSNumber numberWithFloat:1.0];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>position &#x4F4D;&#x7F6E;&#x79FB;&#x52A8; formValue&#x548C;toValue &#x662F;NSValue</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">annimation.fromValue = [NSValue valueWithCGPoint:groupLayer.position];
+annimation.toValue = [NSValue valueWithCGPoint:CGPointMake(320 - 80,
+groupLayer.position.y)];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>shadowColor &#x9634;&#x5F71;&#x989C;&#x8272;&#x53D8;&#x5316;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *shadowColorAnimation = [CABasicAnimation animationWithKeyPath:@&quot;shadowColor&quot;];
+shadowColorAnimation.duration = 2.0;
+shadowColorAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+shadowColorAnimation.fromValue = (__bridge id _Nullable)([UIColor redColor].CGColor);
+shadowColorAnimation.toValue = (__bridge id _Nullable)([UIColor yellowColor].CGColor);
+shadowColorAnimation.fillMode = kCAFillModeForwards;
+shadowColorAnimation.removedOnCompletion = NO;
+shadowColorAnimation.autoreverses = NO;</span><br></pre></td></tr></table></figure>
+<h3 id="u52A8_u753B_u7ED3_u675F_u540E_u56DE_u5230_u521D_u59CB_u72B6_u6001_u89E3_u51B3_u65B9_u6CD5"><a href="#u52A8_u753B_u7ED3_u675F_u540E_u56DE_u5230_u521D_u59CB_u72B6_u6001_u89E3_u51B3_u65B9_u6CD5" class="headerlink" title="&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x56DE;&#x5230;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;"></a>&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x56DE;&#x5230;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</h3><pre><code>animation.removedOnCompletion = NO;
+animation.fillMode = kCAFillModeForwards;
+</code></pre><p>###&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; &#x9010;&#x6E10;&#x753B;&#x534A;&#x5706;&#x5E76;&#x65CB;&#x8F6C;&#x7ED3;&#x675F;&#x540E;&#x534A;&#x5706;&#x8FB9;&#x8F6C;&#x8FB9;&#x6D88;&#x5931;&#x7684;&#x4F8B;&#x5B50;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIView *view = [[UIView alloc] init];
+view.frame = CGRectMake(10, 40, 180, 180);
+view.center = CGPointMake(self.view.frame.size.width/2, 130);
+view.backgroundColor = [UIColor redColor];
+view.layer.cornerRadius = 90;
+view.layer.masksToBounds = true;
+[self.view addSubview:view];
+
+CAShapeLayer *layer = [CAShapeLayer layer];
+layer.lineWidth = 3;
+layer.fillColor = nil;
+layer.strokeColor = [UIColor blueColor].CGColor;
+
+UIBezierPath *path = [UIBezierPath bezierPath];
+CGFloat height = 85* sin(M_PI_2) + 90;
+CGFloat width = 85 * cos(M_PI_2) + 90;
+[path addArcWithCenter:CGPointMake(90, 90) radius:85 startAngle:M_PI endAngle:M_PI*2/3 clockwise:false];
+layer.path = path.CGPath;
+
+CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@&quot;strokeEnd&quot;];
+pathAnimation.duration = 2;
+pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+pathAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+pathAnimation.toValue = [NSNumber numberWithFloat:1.0];
+pathAnimation.autoreverses = NO;
+pathAnimation.delegate = self;
+[pathAnimation setValue:layer forKey:@&quot;layer&quot;];
+[pathAnimation setValue:view forKey:@&quot;View&quot;];
+
+CABasicAnimation *animation =  [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+animation.fromValue = [NSNumber numberWithFloat:0];
+animation.toValue = [NSNumber numberWithFloat: M_PI ];
+animation.duration = 2;
+animation.cumulative = YES;
+
+//pathAnimation&#x9700;&#x8981;&#x52A0;&#x5728;layer&#x4E0A;&#xFF0C;&#x5426;&#x5219;&#x52A8;&#x753B;&#x65E0;&#x6548;
+[layer addAnimation:pathAnimation forKey:@&quot;ani&quot;];
+view.layer.mask = layer;
+[view.layer addAnimation:animation forKey:@&quot;rotationAnimation&quot;];
+
+&#x5728;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x76F8;&#x53CD;&#x65B9;&#x5411;&#x7684;&#x52A8;&#x753B;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cim02yraj00006ns6jiwnpm8k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用CALayer中的mask属性绘图和动画" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/13/使用CALayer中的mask属性绘图和动画/" class="article-date">
@@ -180,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cilq51hvm0004vys6z541npak" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cim02yrb600046ns6tlsl1vo7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +369,7 @@ self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cilq51hve0001vys6ffe4s2ae" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cim02yraz00016ns63nngbu4m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +450,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cilq51hvh0002vys6o7idzfyn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cim02yrb200026ns64hm1n1pa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,7 +487,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cilq51hvi0003vys6gkannel3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cim02yrb400036ns6d9cdffjq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,7 +527,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cilq51hvs0006vys6zsl6p5x5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cim02yrbb00066ns60s5lzzuf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -463,7 +567,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cilq51hvw0008vys6dd8nbuig" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cim02yrbf00086ns6rrru8y2d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -501,7 +605,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cilq51hvu0007vys674hqjg7c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cim02yrbd00076ns6rwzj3un6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,7 +645,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cilq51hvp0005vys68qecxb1y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cim02yrb900056ns6d4f2u5i9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,7 +690,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cilq51huy0000vys615211i5b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cim02yrbh00096ns651w9ovnn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -611,7 +715,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -621,6 +725,10 @@ if(cacheArray.count &gt; 0 ) {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/20/CAAnimation-常用的keyPath整理/">CAAnimation 常用的keyPath整理</a>
+          </li>
         
           <li>
             <a href="/2016/03/13/使用CALayer中的mask属性绘图和动画/">使用CALayer中的mask属性绘图和动画</a>
@@ -636,10 +744,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/02/21/先present后再push的页面返回/">先present后再push的页面返回</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/21/swift中AnyObject调用OC方法/">swift中AnyObject调用OC方法</a>
           </li>
         
       </ul>
