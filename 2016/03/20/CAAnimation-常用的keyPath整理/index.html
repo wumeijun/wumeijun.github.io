@@ -8,8 +8,7 @@
   <meta name="description" content="CAAnimation &amp;#x5E38;&amp;#x7528;&amp;#x7684;keyPath[CAAnimation animationWithKeyPath: @&amp;#x201D;key&amp;#x201D;]
 
 formValue&amp;#x548C;toValue &amp;#x90FD;&amp;#x662F;float&amp;#x7C7B;&amp;#x578B;
-
-transform.scale &amp;#x7F29;&amp;#x653E;tra">
+  transform.scale &amp;#x7F29;&amp;#x653E;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CAAnimation 常用的keyPath整理">
 <meta property="og:url" content="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/index.html">
@@ -17,16 +16,14 @@ transform.scale &amp;#x7F29;&amp;#x653E;tra">
 <meta property="og:description" content="CAAnimation &amp;#x5E38;&amp;#x7528;&amp;#x7684;keyPath[CAAnimation animationWithKeyPath: @&amp;#x201D;key&amp;#x201D;]
 
 formValue&amp;#x548C;toValue &amp;#x90FD;&amp;#x662F;float&amp;#x7C7B;&amp;#x578B;
-
-transform.scale &amp;#x7F29;&amp;#x653E;tra">
-<meta property="og:updated_time" content="2016-03-20T04:45:32.000Z">
+  transform.scale &amp;#x7F29;&amp;#x653E;">
+<meta property="og:updated_time" content="2016-03-20T04:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CAAnimation 常用的keyPath整理">
 <meta name="twitter:description" content="CAAnimation &amp;#x5E38;&amp;#x7528;&amp;#x7684;keyPath[CAAnimation animationWithKeyPath: @&amp;#x201D;key&amp;#x201D;]
 
 formValue&amp;#x548C;toValue &amp;#x90FD;&amp;#x662F;float&amp;#x7C7B;&amp;#x578B;
-
-transform.scale &amp;#x7F29;&amp;#x653E;tra">
+  transform.scale &amp;#x7F29;&amp;#x653E;">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -96,10 +93,22 @@ transform.scale &amp;#x7F29;&amp;#x653E;tra">
       
         <h3 id="CAAnimation__u5E38_u7528_u7684keyPath"><a href="#CAAnimation__u5E38_u7528_u7684keyPath" class="headerlink" title="CAAnimation &#x5E38;&#x7528;&#x7684;keyPath"></a>CAAnimation &#x5E38;&#x7528;&#x7684;keyPath</h3><p>[CAAnimation animationWithKeyPath: @&#x201D;key&#x201D;]</p>
 <ul>
-<li>formValue&#x548C;toValue &#x90FD;&#x662F;float&#x7C7B;&#x578B;</li>
+<li><p>formValue&#x548C;toValue &#x90FD;&#x662F;float&#x7C7B;&#x578B;</p>
+<p>  transform.scale &#x7F29;&#x653E;<br>  transform.scale.x &#x5BBD;&#x7684;&#x7F29;&#x653E;<br>  transform.scale.y &#x9AD8;&#x7684;&#x7F29;&#x653E;<br>  transform.rotation.z &#x7C7B;&#x4F3C;&#x7ED5;&#x7740;UIView&#x7684;&#x4E2D;&#x5FC3;&#x65CB;&#x8F6C;&#xFF0C;&#x5E73;&#x9762;&#x56FE;&#x7684;&#x65CB;&#x8F6C;<br>  opacity &#x900F;&#x660E;&#x5EA6;&#x53D8;&#x6362;</p>
+<p>  strokeStart&#x548C;strokeEnd &#x8DEF;&#x5F84;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x5C3E;</p>
+<pre><code>1 keyPath = strokeStart  fromValue = 0&#xFF0C;toValue = 1
+&#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;
+
+2 keyPath = strokeStart  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0
+&#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;
+
+3 keyPath = strokeEnd  fromValue = 0&#xFF0C;toValue = 1
+&#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;
+
+4 keyPath = strokeEnd  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0
+&#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;
+</code></pre></li>
 </ul>
-<p>transform.scale &#x7F29;&#x653E;<br>transform.scale.x &#x5BBD;&#x7684;&#x7F29;&#x653E;<br>transform.scale.y &#x9AD8;&#x7684;&#x7F29;&#x653E;<br>transform.rotation.z &#x7C7B;&#x4F3C;&#x7ED5;&#x7740;UIView&#x7684;&#x4E2D;&#x5FC3;&#x65CB;&#x8F6C;&#xFF0C;&#x5E73;&#x9762;&#x56FE;&#x7684;&#x65CB;&#x8F6C;<br>opacity &#x900F;&#x660E;&#x5EA6;&#x53D8;&#x6362;</p>
-<p>strokeStart&#x548C;strokeEnd &#x8DEF;&#x5F84;&#x7684;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x5C3E;<br>     1 keyPath = strokeStart  fromValue = 0&#xFF0C;toValue = 1<br>     &#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;<br>     2 keyPath = strokeStart  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0<br>     &#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;<br>     3 keyPath = strokeEnd  fromValue = 0&#xFF0C;toValue = 1<br>     &#x6B63;&#x65B9;&#x5411;&#x753B;&#x51FA;&#x8DEF;&#x5F84;<br>     4 keyPath = strokeEnd  &#x52A8;&#x753B;&#x7684;fromValue = 1&#xFF0C;toValue = 0<br>     &#x53CD;&#x65B9;&#x5411;&#x8DEF;&#x5F84;&#x6D88;&#x5931;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">annimation.fromValue = [NSNumber numberWithFloat:0.0];
 annimation.toValue = [NSNumber numberWithFloat:1.0];</span><br></pre></td></tr></table></figure>
 <ul>
@@ -121,7 +130,7 @@ shadowColorAnimation.removedOnCompletion = NO;
 shadowColorAnimation.autoreverses = NO;</span><br></pre></td></tr></table></figure>
 <h3 id="u52A8_u753B_u7ED3_u675F_u540E_u56DE_u5230_u521D_u59CB_u72B6_u6001_u89E3_u51B3_u65B9_u6CD5"><a href="#u52A8_u753B_u7ED3_u675F_u540E_u56DE_u5230_u521D_u59CB_u72B6_u6001_u89E3_u51B3_u65B9_u6CD5" class="headerlink" title="&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x56DE;&#x5230;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;"></a>&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x56DE;&#x5230;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</h3><pre><code>animation.removedOnCompletion = NO;
 animation.fillMode = kCAFillModeForwards;
-</code></pre><p>###&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; &#x9010;&#x6E10;&#x753B;&#x534A;&#x5706;&#x5E76;&#x65CB;&#x8F6C;&#x7ED3;&#x675F;&#x540E;&#x534A;&#x5706;&#x8FB9;&#x8F6C;&#x8FB9;&#x6D88;&#x5931;&#x7684;&#x4F8B;&#x5B50;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIView *view = [[UIView alloc] init];
+</code></pre><h3 id="u4E0B_u9762_u662F_u4E00_u4E2A__u9010_u6E10_u753B_u534A_u5706_u5E76_u65CB_u8F6C_u7ED3_u675F_u540E_u534A_u5706_u8FB9_u8F6C_u8FB9_u6D88_u5931_u7684_u4F8B_u5B50"><a href="#u4E0B_u9762_u662F_u4E00_u4E2A__u9010_u6E10_u753B_u534A_u5706_u5E76_u65CB_u8F6C_u7ED3_u675F_u540E_u534A_u5706_u8FB9_u8F6C_u8FB9_u6D88_u5931_u7684_u4F8B_u5B50" class="headerlink" title="&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; &#x9010;&#x6E10;&#x753B;&#x534A;&#x5706;&#x5E76;&#x65CB;&#x8F6C;&#x7ED3;&#x675F;&#x540E;&#x534A;&#x5706;&#x8FB9;&#x8F6C;&#x8FB9;&#x6D88;&#x5931;&#x7684;&#x4F8B;&#x5B50;"></a>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; &#x9010;&#x6E10;&#x753B;&#x534A;&#x5706;&#x5E76;&#x65CB;&#x8F6C;&#x7ED3;&#x675F;&#x540E;&#x534A;&#x5706;&#x8FB9;&#x8F6C;&#x8FB9;&#x6D88;&#x5931;&#x7684;&#x4F8B;&#x5B50;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIView *view = [[UIView alloc] init];
 view.frame = CGRectMake(10, 40, 180, 180);
 view.center = CGPointMake(self.view.frame.size.width/2, 130);
 view.backgroundColor = [UIColor redColor];
@@ -161,12 +170,12 @@ animation.cumulative = YES;
 view.layer.mask = layer;
 [view.layer addAnimation:animation forKey:@&quot;rotationAnimation&quot;];
 
-&#x5728;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x76F8;&#x53CD;&#x65B9;&#x5411;&#x7684;&#x52A8;&#x753B;</span><br></pre></td></tr></table></figure></p>
+&#x5728;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x76F8;&#x53CD;&#x65B9;&#x5411;&#x7684;&#x52A8;&#x753B;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cim02yraj00006ns6jiwnpm8k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cim030rw700007ks6q31s6dh4" class="article-share-link">Share</a>
       
       
     </footer>
