@@ -61,6 +61,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS放射变换学习－1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/27/iOS放射变换学习－1/" class="article-date">
+  <time datetime="2016-03-27T12:37:44.000Z" itemprop="datePublished">2016-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/27/iOS放射变换学习－1/">iOS放射变换学习－1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u653E_u5C04_u53D8_u6362"><a href="#u653E_u5C04_u53D8_u6362" class="headerlink" title="&#x653E;&#x5C04;&#x53D8;&#x6362;"></a>&#x653E;&#x5C04;&#x53D8;&#x6362;</h3><p>UIView&#x7684;transform&#x662F;CGAffineTransform&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x505A;&#x5E73;&#x79FB;&#xFF0C;&#x7F29;&#x653E;&#xFF0C;&#x65CB;&#x8F6C;<br>&#x521D;&#x59CB;&#x5316; CGAffineTransform transform = CGAffineTransformIdentity</p>
+<p>CGAffineTransformIdentity &#x503C;&#x662F;/<em> The identity transform: [ 1 0 0 1 0 0 ]. </em>/;</p>
+<p>CGAffineTransform transform  = CGAffineTransformMake(CGFloat a,CGFloat b,</p>
+<p>CGFloat c,CGFloa td,CGFloat tx,CGFloat ty)</p>
+<p>&#x77E9;&#x9635;&#x7B97;&#x6CD5;&#x516C;&#x5F0F;&#xFF1A;</p>
+<p><img src="/2016/03/27/iOS&#x653E;&#x5C04;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#xFF0D;1/transform1.gif" alt="transform1"></p>
+<h3 id="u521B_u5EFA_u4E00_u4E2ACGAffineTransform"><a href="#u521B_u5EFA_u4E00_u4E2ACGAffineTransform" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform</h3><p>Core Graphics&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;CGAffineTransform&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<p>&#x65CB;&#x8F6C; &#xFF0D; CGAffineTransformMakeRotation(CGFloat angle)<br>&#x7F29;&#x653E; &#xFF0D; CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)<br>&#x5E73;&#x79FB; &#xFF0D; CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)</p>
+<p>CALayer&#x4E5F;&#x6709;&#x4E00;&#x4E2A;transform&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F;CATransform3D<br>CALayer&#x5BF9;&#x5E94;&#x4E8E;UIView&#x7684;transform&#x5C5E;&#x6027;&#x53EB;&#x505A;affineTransform</p>
+<p>&#x4F8B;&#x5982;&#x5BF9; &#x56FE;&#x5C42;&#x65CB;&#x8F6C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI_4);
+self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/27/iOS放射变换学习－1/" data-id="cimakj36e000749s6zc3w07mz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CAAnimation-常用的keyPath整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/20/CAAnimation-常用的keyPath整理/" class="article-date">
@@ -167,7 +214,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cim030rw700007ks6q31s6dh4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cimakj35i000049s6ac638e0u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +343,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cim030rwr00047ks6s5d7rrq4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cimakj365000449s6ml6aahqd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +428,7 @@ self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cim030rwl00017ks6o9iq98iy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cimakj35x000149s6a085uaik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +509,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cim030rwo00027ks6lzvb0jj9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cimakj361000249s6th85rboa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -499,7 +546,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cim030rwp00037ks6dawb03e3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cimakj363000349s6hfr77215" class="article-share-link">Share</a>
       
       
     </footer>
@@ -539,7 +586,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cim030rwu00067ks6fhya0bmy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cimakj36b000649s64nejdf57" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,7 +626,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cim030rwy00087ks6ks9y5s84" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cimakj36n000949s68nrontr9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -617,7 +664,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cim030rwx00077ks62gqe32ce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cimakj36l000849s6we0k0hoe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -657,7 +704,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cim030rwt00057ks6vn92z80j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cimakj368000549s6zm7pgn1a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -667,51 +714,10 @@ if(cacheArray.count &gt; 0 ) {
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/31/hello-world/" class="article-date">
-  <time datetime="2016-01-31T02:07:29.000Z" itemprop="datePublished">2016-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cim030rx000097ks6waxvu7gt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -727,7 +733,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -737,6 +743,10 @@ if(cacheArray.count &gt; 0 ) {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/27/iOS放射变换学习－1/">iOS放射变换学习－1</a>
+          </li>
         
           <li>
             <a href="/2016/03/20/CAAnimation-常用的keyPath整理/">CAAnimation 常用的keyPath整理</a>
@@ -752,10 +762,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/02/27/实现NSCoding协议对自定义对象的存储/">实现NSCoding协议对自定义对象的存储</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/21/先present后再push的页面返回/">先present后再push的页面返回</a>
           </li>
         
       </ul>

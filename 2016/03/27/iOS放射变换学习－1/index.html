@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>先present后再push的页面返回 | Hello</title>
+  <title>iOS放射变换学习－1 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678if (self.navigationController) {        if (self.presentingViewController &amp;amp;&amp;amp; self.presentingViewController.presentedViewController == self.navigationController) {                  [sel">
+  <meta name="description" content="&amp;#x653E;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="先present后再push的页面返回">
-<meta property="og:url" content="http://yoursite.com/2016/02/21/先present后再push的页面返回/index.html">
+<meta property="og:title" content="iOS放射变换学习－1">
+<meta property="og:url" content="http://yoursite.com/2016/03/27/iOS放射变换学习－1/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="12345678if (self.navigationController) {        if (self.presentingViewController &amp;amp;&amp;amp; self.presentingViewController.presentedViewController == self.navigationController) {                  [sel">
-<meta property="og:updated_time" content="2016-02-21T09:26:33.000Z">
+<meta property="og:description" content="&amp;#x653E;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
+<meta property="og:image" content="http://yoursite.com/2016/03/27/iOS放射变换学习－1/transform1.gif">
+<meta property="og:updated_time" content="2016-03-27T12:54:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="先present后再push的页面返回">
-<meta name="twitter:description" content="12345678if (self.navigationController) {        if (self.presentingViewController &amp;amp;&amp;amp; self.presentingViewController.presentedViewController == self.navigationController) {                  [sel">
+<meta name="twitter:title" content="iOS放射变换学习－1">
+<meta name="twitter:description" content="&amp;#x653E;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -60,10 +61,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-先present后再push的页面返回" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-iOS放射变换学习－1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/02/21/先present后再push的页面返回/" class="article-date">
-  <time datetime="2016-02-21T09:25:14.000Z" itemprop="datePublished">2016-02-21</time>
+    <a href="/2016/03/27/iOS放射变换学习－1/" class="article-date">
+  <time datetime="2016-03-27T12:37:44.000Z" itemprop="datePublished">2016-03-27</time>
 </a>
     
   </div>
@@ -74,7 +75,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      先present后再push的页面返回
+      iOS放射变换学习－1
     </h1>
   
 
@@ -82,12 +83,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (self.navigationController) {</span><br><span class="line">        <span class="keyword">if</span> (self.presentingViewController &amp;&amp; self.presentingViewController.presentedViewController == self.navigationController) {</span><br><span class="line">                  [self.navigationController dismissViewControllerAnimated:YES completion:nil];</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">                  [self.navigationController popToRootViewControllerAnimated:YES];</span><br><span class="line">                }</span><br><span class="line">        }</span><br></pre></td></tr></table></figure>
+        <h3 id="u653E_u5C04_u53D8_u6362"><a href="#u653E_u5C04_u53D8_u6362" class="headerlink" title="&#x653E;&#x5C04;&#x53D8;&#x6362;"></a>&#x653E;&#x5C04;&#x53D8;&#x6362;</h3><p>UIView&#x7684;transform&#x662F;CGAffineTransform&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x505A;&#x5E73;&#x79FB;&#xFF0C;&#x7F29;&#x653E;&#xFF0C;&#x65CB;&#x8F6C;<br>&#x521D;&#x59CB;&#x5316; CGAffineTransform transform = CGAffineTransformIdentity</p>
+<p>CGAffineTransformIdentity &#x503C;&#x662F;/<em> The identity transform: [ 1 0 0 1 0 0 ]. </em>/;</p>
+<p>CGAffineTransform transform  = CGAffineTransformMake(CGFloat a,CGFloat b,</p>
+<p>CGFloat c,CGFloa td,CGFloat tx,CGFloat ty)</p>
+<p>&#x77E9;&#x9635;&#x7B97;&#x6CD5;&#x516C;&#x5F0F;&#xFF1A;</p>
+<p><img src="/2016/03/27/iOS&#x653E;&#x5C04;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#xFF0D;1/transform1.gif" alt="transform1"></p>
+<h3 id="u521B_u5EFA_u4E00_u4E2ACGAffineTransform"><a href="#u521B_u5EFA_u4E00_u4E2ACGAffineTransform" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform</h3><p>Core Graphics&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;CGAffineTransform&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<p>&#x65CB;&#x8F6C; &#xFF0D; CGAffineTransformMakeRotation(CGFloat angle)<br>&#x7F29;&#x653E; &#xFF0D; CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)<br>&#x5E73;&#x79FB; &#xFF0D; CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)</p>
+<p>CALayer&#x4E5F;&#x6709;&#x4E00;&#x4E2A;transform&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F;CATransform3D<br>CALayer&#x5BF9;&#x5E94;&#x4E8E;UIView&#x7684;transform&#x5C5E;&#x6027;&#x53EB;&#x505A;affineTransform</p>
+<p>&#x4F8B;&#x5982;&#x5BF9; &#x56FE;&#x5C42;&#x65CB;&#x8F6C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI_4);
+self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cimakj363000349s6hfr77215" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/27/iOS放射变换学习－1/" data-id="cimakj36e000749s6zc3w07mz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -96,19 +107,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/27/实现NSCoding协议对自定义对象的存储/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          实现NSCoding协议对自定义对象的存储
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/02/21/swift中AnyObject调用OC方法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/20/CAAnimation-常用的keyPath整理/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">swift中AnyObject调用OC方法</div>
+      <div class="article-nav-title">CAAnimation 常用的keyPath整理</div>
     </a>
   
 </nav>
