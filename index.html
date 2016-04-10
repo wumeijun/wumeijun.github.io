@@ -61,6 +61,81 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-带sectionHeaderView的UICollectionView" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/10/带sectionHeaderView的UICollectionView/" class="article-date">
+  <time datetime="2016-04-10T13:09:50.000Z" itemprop="datePublished">2016-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>headerView&#x7EE7;&#x627F;UICollectionReusableView<br>&#x5B9E;&#x73B0;CHTCollectionViewDelegateWaterfallLayout&#xFF0C;UICollectionViewDataSource&#x534F;&#x8BAE;</p>
+</li>
+<li><p>collectionView register HeaderView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collectionView.registerClass(FLSearchHomeHeaderReusableView.self, forSupplementaryViewOfKind: CHTCollectionElementKindSectionHeader, withReuseIdentifier: &quot;HeaderView&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.&#x91CD;&#x5199;viewForSupplementaryElementOfKind&#x65B9;&#x6CD5;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -&gt; UICollectionReusableView {
+
+    var reusableview:UICollectionReusableView?
+
+    // kind &#x8FD8;&#x6709;CHTCollectionElementKindSectionFooter&#x503C;
+    if kind == CHTCollectionElementKindSectionHeader {
+
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(CHTCollectionElementKindSectionHeader, withReuseIdentifier: &quot;HeaderView&quot;, forIndexPath: indexPath) as! FLSearchHomeHeaderReusableView
+
+        switch indexPath.section {
+        case 0:
+            headerView.nameLabel.text = &quot;&#x70ED;&#x95E8;&#x6807;&#x7B7E;&quot;
+            headerView.colorView.backgroundColor = FL.Style.tomatoRedColor
+            break
+        case 1:
+            headerView.nameLabel.text = &quot;&#x98DF;&#x7269;&#x5206;&#x7C7B;&quot;
+            headerView.colorView.backgroundColor = FL.Style.tomatoRedColor
+            break
+        default:
+            break
+        }
+
+        reusableview = headerView
+    }
+
+    return reusableview!
+}</span><br></pre></td></tr></table></figure>
+<p>4.&#x8BBE;&#x7F6E;sectionHeaderView&#x7684;&#x9AD8;&#x5EA6;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, heightForHeaderInSection section: Int) -&gt; CGFloat {
+    return 70
+}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="cimulfzcx0002h427a822bfph" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用Energy-Diagnostics性能测试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/03/使用Energy-Diagnostics性能测试/" class="article-date">
@@ -95,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cimkhri7j0004ahs6o8o12yt6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cimulfzd30005h427vmzyctfv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -105,9 +180,9 @@
 
 
   
-    <article id="post-iOS放射变换学习－1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iOS仿射变换学习－1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/27/iOS放射变换学习－1/" class="article-date">
+    <a href="/2016/03/27/iOS仿射变换学习－1/" class="article-date">
   <time datetime="2016-03-27T12:37:44.000Z" itemprop="datePublished">2016-03-27</time>
 </a>
     
@@ -119,7 +194,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/27/iOS放射变换学习－1/">iOS放射变换学习－1</a>
+      <a class="article-title" href="/2016/03/27/iOS仿射变换学习－1/">iOS仿射变换学习－1</a>
     </h1>
   
 
@@ -127,12 +202,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="u653E_u5C04_u53D8_u6362"><a href="#u653E_u5C04_u53D8_u6362" class="headerlink" title="&#x653E;&#x5C04;&#x53D8;&#x6362;"></a>&#x653E;&#x5C04;&#x53D8;&#x6362;</h3><p>UIView&#x7684;transform&#x662F;CGAffineTransform&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x505A;&#x5E73;&#x79FB;&#xFF0C;&#x7F29;&#x653E;&#xFF0C;&#x65CB;&#x8F6C;<br>&#x521D;&#x59CB;&#x5316; CGAffineTransform transform = CGAffineTransformIdentity</p>
+        <h3 id="u4EFF_u5C04_u53D8_u6362"><a href="#u4EFF_u5C04_u53D8_u6362" class="headerlink" title="&#x4EFF;&#x5C04;&#x53D8;&#x6362;"></a>&#x4EFF;&#x5C04;&#x53D8;&#x6362;</h3><p>UIView&#x7684;transform&#x662F;CGAffineTransform&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x505A;&#x5E73;&#x79FB;&#xFF0C;&#x7F29;&#x653E;&#xFF0C;&#x65CB;&#x8F6C;<br>&#x521D;&#x59CB;&#x5316; CGAffineTransform transform = CGAffineTransformIdentity</p>
 <p>CGAffineTransformIdentity &#x503C;&#x662F;/<em> The identity transform: [ 1 0 0 1 0 0 ]. </em>/;</p>
 <p>CGAffineTransform transform  = CGAffineTransformMake(CGFloat a,CGFloat b,</p>
 <p>CGFloat c,CGFloa td,CGFloat tx,CGFloat ty)</p>
 <p>&#x77E9;&#x9635;&#x7B97;&#x6CD5;&#x516C;&#x5F0F;&#xFF1A;</p>
-<p><img src="/2016/03/27/iOS&#x653E;&#x5C04;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#xFF0D;1/transform1.png" alt="transform1"></p>
+<p><img src="/2016/03/27/iOS&#x4EFF;&#x5C04;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#xFF0D;1/transform1.png" alt="transform1"></p>
 <h3 id="u521B_u5EFA_u4E00_u4E2ACGAffineTransform"><a href="#u521B_u5EFA_u4E00_u4E2ACGAffineTransform" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform</h3><p>Core Graphics&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;CGAffineTransform&#x5B9E;&#x4F8B;&#xFF1A;</p>
 <p>&#x65CB;&#x8F6C; &#xFF0D; CGAffineTransformMakeRotation(CGFloat angle)<br>&#x7F29;&#x653E; &#xFF0D; CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)<br>&#x5E73;&#x79FB; &#xFF0D; CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)</p>
 <p>CALayer&#x4E5F;&#x6709;&#x4E00;&#x4E2A;transform&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F;CATransform3D<br>CALayer&#x5BF9;&#x5E94;&#x4E8E;UIView&#x7684;transform&#x5C5E;&#x6027;&#x53EB;&#x505A;affineTransform</p>
@@ -142,7 +217,7 @@ self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></ta
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/27/iOS放射变换学习－1/" data-id="cimkhri800008ahs6t22p77od" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="cimulfzdr000bh4279q062jaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +333,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cimkhri750000ahs6qfmkk6lw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cimulfzcl0000h427rl9dpkus" class="article-share-link">Share</a>
       
       
     </footer>
@@ -387,7 +462,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cimkhri7t0005ahs645iy7kbr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cimulfzdc0006h427bjsgdcjf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -472,7 +547,7 @@ self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cimkhri7c0001ahs612aoyj9j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cimulfzcu0001h427n9prge3t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +628,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cimkhri7f0002ahs6duz3ju09" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cimulfzcz0003h427wv7codt3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,7 +665,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cimkhri7g0003ahs61j5giitc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cimulfzd10004h427ora1s2px" class="article-share-link">Share</a>
       
       
     </footer>
@@ -630,7 +705,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cimkhri7y0007ahs6ju9swxhi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cimulfzdh0008h427copoii3r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -670,45 +745,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cimkhri89000aahs6g6rexrwt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-iOS动画" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/03/iOS动画/" class="article-date">
-  <time datetime="2016-02-03T02:39:20.000Z" itemprop="datePublished">2016-02-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/03/iOS动画/">iOS动画</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B"><a href="#u901A_u8FC7_u4EE3_u7801_u5757_u4F7F_u7528UIKit_u52A8_u753B" class="headerlink" title="&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x5757;&#x4F7F;&#x7528;UIKit&#x52A8;&#x753B;"></a>&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x5757;&#x4F7F;&#x7528;UIKit&#x52A8;&#x753B;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)animation {</span><br><span class="line"></span><br><span class="line">	[UIView animateWithDuration:<span class="number">1</span></span><br><span class="line">						 delay:<span class="number">0</span></span><br><span class="line">						 options:UIViewAnimationOptionTransitionFlipFromLeft</span><br><span class="line">						 animations:^{</span><br><span class="line"></span><br><span class="line">						 } completion:^(BOOL finish){</span><br><span class="line">						 }];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>###&#x4F7F;&#x7528;Core Animation&#x5BF9;&#x8C61;&#x6765;&#x5B9E;&#x73B0;&#x52A8;&#x753B;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cimkhri860009ahs6gljgzwmo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cimulfzdo000ah4272p74lknb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -737,7 +774,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -749,11 +786,15 @@ if(cacheArray.count &gt; 0 ) {
       <ul>
         
           <li>
+            <a href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/03/使用Energy-Diagnostics性能测试/">使用Energy Diagnostics性能测试</a>
           </li>
         
           <li>
-            <a href="/2016/03/27/iOS放射变换学习－1/">iOS放射变换学习－1</a>
+            <a href="/2016/03/27/iOS仿射变换学习－1/">iOS仿射变换学习－1</a>
           </li>
         
           <li>
@@ -762,10 +803,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/03/13/使用CALayer中的mask属性绘图和动画/">使用CALayer中的mask属性绘图和动画</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/模拟逐字输入文字的效果/">模拟逐字输入文字的效果</a>
           </li>
         
       </ul>

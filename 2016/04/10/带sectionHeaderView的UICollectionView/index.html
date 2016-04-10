@@ -3,23 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用Energy Diagnostics性能测试 | Hello</title>
+  <title>带sectionHeaderView的UICollectionView | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x4F7F;&amp;#x7528;Energy Diagnostics&amp;#x6027;&amp;#x80FD;&amp;#x6D4B;&amp;#x8BD5;
-1.&amp;#x65AD;&amp;#x5F00;&amp;#x624B;&amp;#x673A;&amp;#x7684;USB&amp;#xFF0C;&amp;#x5728;&amp;#x8BBE;&amp;#x7F6E;&amp;#xFF0D;&amp;#x5F00;&amp;#x53D1;&amp;#x8005;&amp;#xFF0D;Logging&amp;#x91CC;">
+  <meta name="description" content="headerView&amp;#x7EE7;&amp;#x627F;UICollectionReusableView&amp;#x5B9E;&amp;#x73B0;CHTCollectionViewDelegateWaterfallLayout&amp;#xFF0C;UICollectionViewDataSource&amp;#x534F;&amp;#x8BAE;
+
+collectionView register HeaderView
+1collec">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Energy Diagnostics性能测试">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/index.html">
+<meta property="og:title" content="带sectionHeaderView的UICollectionView">
+<meta property="og:url" content="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="&amp;#x4F7F;&amp;#x7528;Energy Diagnostics&amp;#x6027;&amp;#x80FD;&amp;#x6D4B;&amp;#x8BD5;
-1.&amp;#x65AD;&amp;#x5F00;&amp;#x624B;&amp;#x673A;&amp;#x7684;USB&amp;#xFF0C;&amp;#x5728;&amp;#x8BBE;&amp;#x7F6E;&amp;#xFF0D;&amp;#x5F00;&amp;#x53D1;&amp;#x8005;&amp;#xFF0D;Logging&amp;#x91CC;">
-<meta property="og:image" content="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/重构前.png">
-<meta property="og:image" content="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/重构后.png">
-<meta property="og:updated_time" content="2016-04-03T11:35:55.000Z">
+<meta property="og:description" content="headerView&amp;#x7EE7;&amp;#x627F;UICollectionReusableView&amp;#x5B9E;&amp;#x73B0;CHTCollectionViewDelegateWaterfallLayout&amp;#xFF0C;UICollectionViewDataSource&amp;#x534F;&amp;#x8BAE;
+
+collectionView register HeaderView
+1collec">
+<meta property="og:updated_time" content="2016-04-10T13:15:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Energy Diagnostics性能测试">
-<meta name="twitter:description" content="&amp;#x4F7F;&amp;#x7528;Energy Diagnostics&amp;#x6027;&amp;#x80FD;&amp;#x6D4B;&amp;#x8BD5;
-1.&amp;#x65AD;&amp;#x5F00;&amp;#x624B;&amp;#x673A;&amp;#x7684;USB&amp;#xFF0C;&amp;#x5728;&amp;#x8BBE;&amp;#x7F6E;&amp;#xFF0D;&amp;#x5F00;&amp;#x53D1;&amp;#x8005;&amp;#xFF0D;Logging&amp;#x91CC;">
+<meta name="twitter:title" content="带sectionHeaderView的UICollectionView">
+<meta name="twitter:description" content="headerView&amp;#x7EE7;&amp;#x627F;UICollectionReusableView&amp;#x5B9E;&amp;#x73B0;CHTCollectionViewDelegateWaterfallLayout&amp;#xFF0C;UICollectionViewDataSource&amp;#x534F;&amp;#x8BAE;
+
+collectionView register HeaderView
+1collec">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -65,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-使用Energy-Diagnostics性能测试" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-带sectionHeaderView的UICollectionView" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/03/使用Energy-Diagnostics性能测试/" class="article-date">
-  <time datetime="2016-04-03T11:26:09.000Z" itemprop="datePublished">2016-04-03</time>
+    <a href="/2016/04/10/带sectionHeaderView的UICollectionView/" class="article-date">
+  <time datetime="2016-04-10T13:09:50.000Z" itemprop="datePublished">2016-04-10</time>
 </a>
     
   </div>
@@ -79,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用Energy Diagnostics性能测试
+      带sectionHeaderView的UICollectionView
     </h1>
   
 
@@ -87,19 +91,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#x4F7F;&#x7528;Energy Diagnostics&#x6027;&#x80FD;&#x6D4B;&#x8BD5;</p>
-<p>1.&#x65AD;&#x5F00;&#x624B;&#x673A;&#x7684;USB&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#xFF0D;&#x5F00;&#x53D1;&#x8005;&#xFF0D;Logging&#x91CC; &#x9009;&#x62E9;Start Recording<br>2.&#x8FD0;&#x884C;App&#xFF0C;&#x64CD;&#x4F5C;&#x8981;&#x6D4B;&#x8BD5;&#x7684;&#x529F;&#x80FD;<br>3.&#x5728;&#x8BBE;&#x7F6E;&#xFF0D;&#x5F00;&#x53D1;&#x8005;&#xFF0D;Logging&#x91CC; &#x9009;&#x62E9;Stop Recording<br>4.&#x8FDE;&#x63A5;&#x7535;&#x8111;&#x4E0E;&#x624B;&#x673A;&#xFF0C;&#x6253;&#x5F00;Instruments&#xFF0C;&#x9009;&#x62E9;Energy Diagnostics<br>5.&#x9009;&#x62E9; File&#xFF0D;Import Logged Data From Device</p>
-<p>&#x8FD9;&#x5468;&#x5728;&#x98DF;&#x7269;&#x5E93;&#x626B;&#x7801;&#x65B9;&#x9762;&#x505A;&#x4E86;&#x91CD;&#x6784;&#xFF0C;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#x4E0B;&#x56FE;&#xFF0C;&#x770B;&#x7740;&#x56FE;&#x786E;&#x5B9E;&#x6709;&#x6240;&#x63D0;&#x5347;</p>
-<p>&#x91CD;&#x6784;&#x524D;</p>
-<p><img src="/2016/04/03/&#x4F7F;&#x7528;Energy-Diagnostics&#x6027;&#x80FD;&#x6D4B;&#x8BD5;/&#x91CD;&#x6784;&#x524D;.png" alt="&#x91CD;&#x6784;&#x524D;"></p>
-<p>&#x91CD;&#x6784;&#x540E;</p>
-<p><img src="/2016/04/03/&#x4F7F;&#x7528;Energy-Diagnostics&#x6027;&#x80FD;&#x6D4B;&#x8BD5;/&#x91CD;&#x6784;&#x540E;.png" alt="&#x91CD;&#x6784;&#x540E;"></p>
-<p>&#x5927;&#x81F4;&#x6709;&#x6240;&#x63D0;&#x5347;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x53C2;&#x6570;&#x8FD8;&#x9700;&#x8981;&#x518D;&#x5B66;&#x4E60;</p>
+        <ol>
+<li><p>headerView&#x7EE7;&#x627F;UICollectionReusableView<br>&#x5B9E;&#x73B0;CHTCollectionViewDelegateWaterfallLayout&#xFF0C;UICollectionViewDataSource&#x534F;&#x8BAE;</p>
+</li>
+<li><p>collectionView register HeaderView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collectionView.registerClass(FLSearchHomeHeaderReusableView.self, forSupplementaryViewOfKind: CHTCollectionElementKindSectionHeader, withReuseIdentifier: &quot;HeaderView&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.&#x91CD;&#x5199;viewForSupplementaryElementOfKind&#x65B9;&#x6CD5;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -&gt; UICollectionReusableView {
+
+    var reusableview:UICollectionReusableView?
+
+    // kind &#x8FD8;&#x6709;CHTCollectionElementKindSectionFooter&#x503C;
+    if kind == CHTCollectionElementKindSectionHeader {
+
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(CHTCollectionElementKindSectionHeader, withReuseIdentifier: &quot;HeaderView&quot;, forIndexPath: indexPath) as! FLSearchHomeHeaderReusableView
+
+        switch indexPath.section {
+        case 0:
+            headerView.nameLabel.text = &quot;&#x70ED;&#x95E8;&#x6807;&#x7B7E;&quot;
+            headerView.colorView.backgroundColor = FL.Style.tomatoRedColor
+            break
+        case 1:
+            headerView.nameLabel.text = &quot;&#x98DF;&#x7269;&#x5206;&#x7C7B;&quot;
+            headerView.colorView.backgroundColor = FL.Style.tomatoRedColor
+            break
+        default:
+            break
+        }
+
+        reusableview = headerView
+    }
+
+    return reusableview!
+}</span><br></pre></td></tr></table></figure>
+<p>4.&#x8BBE;&#x7F6E;sectionHeaderView&#x7684;&#x9AD8;&#x5EA6;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, heightForHeaderInSection section: Int) -&gt; CGFloat {
+    return 70
+}</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cimulfzd30005h427vmzyctfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="cimulfzcx0002h427a822bfph" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +143,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/04/10/带sectionHeaderView的UICollectionView/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          带sectionHeaderView的UICollectionView
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/27/iOS仿射变换学习－1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/03/使用Energy-Diagnostics性能测试/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">iOS仿射变换学习－1</div>
+      <div class="article-nav-title">使用Energy Diagnostics性能测试</div>
     </a>
   
 </nav>
