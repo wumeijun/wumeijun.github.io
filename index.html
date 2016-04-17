@@ -61,6 +61,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS右滑手势" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/17/iOS右滑手势/" class="article-date">
+  <time datetime="2016-04-17T01:21:05.000Z" itemprop="datePublished">2016-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/17/iOS右滑手势/">iOS右滑手势</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u81EA_u5B9A_u4E86UINavigationController_leftBarButtonItem__u4E4B_u540E_2C_u7CFB_u7EDF_u81EA_u5E26_u7684_u53F3_u6ED1_u8FD4_u56DE_u4F1A_u5931_u6548"><a href="#u81EA_u5B9A_u4E86UINavigationController_leftBarButtonItem__u4E4B_u540E_2C_u7CFB_u7EDF_u81EA_u5E26_u7684_u53F3_u6ED1_u8FD4_u56DE_u4F1A_u5931_u6548" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E86;UINavigationController leftBarButtonItem &#x4E4B;&#x540E;,&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;&#x53F3;&#x6ED1;&#x8FD4;&#x56DE;&#x4F1A;&#x5931;&#x6548;"></a>&#x81EA;&#x5B9A;&#x4E86;UINavigationController leftBarButtonItem &#x4E4B;&#x540E;,&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;&#x53F3;&#x6ED1;&#x8FD4;&#x56DE;&#x4F1A;&#x5931;&#x6548;</h3><p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;:</p>
+<p> 1.&#x81EA;&#x5B9A;&#x4E49;NavigationController,&#x5B9E;&#x73B0; UIGestureRecognizerDelegate&#x534F;&#x8BAE;<br> 2.&#x8BBE;&#x7F6E;NavigationController&#x7684;interactivePopGestureRecognizer&#x7684;delegate &#x4E3A;&#x5F53;&#x524D;&#x7684;NavigationController<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class FLNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
+
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      self.interactivePopGestureRecognizer?.delegate = self
+      self.navigationItem.hidesBackButton = false
+  }
+
+  func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -&gt; Bool {
+
+      if gestureRecognizer == self.interactivePopGestureRecognizer {
+          if self.viewControllers.count &lt; 2 || self.visibleViewController == self.viewControllers.first {
+              return false
+          }
+      }
+      return true
+  }</span><br></pre></td></tr></table></figure></p>
+<h3 id="u9690_u85CF_u4E86navigationBar_u4E4B_u540Epush_u4E00_u4E2AViewController_2C_u9891_u7E41_u7684_u8FDB_u884C_u53F3_u6ED1_u4F46_u4E0D_u8FD4_u56DE_u64CD_u4F5C_uFF0C_u518Dpush_u5230_u4E00_u4E2A_u65B0_u9875_u9762_u4E4B_u540E_uFF0C_u4F1A_u51FA_u73B0_u4E0B_u4E00_u4E2AViewcontroller_u7684navigationBar_u662F_u4E0A_u4E00_u4E2AViewController_u7684navigationBar_uFF0C_u65E0_u6CD5_u9000_u51FA_u9875_u9762_uFF0C_u4E0A_u4E00_u4E2AViewController_u53D8_u6210_u91CE_u6307_u9488_uFF0C_u5BFC_u81F4crash"><a href="#u9690_u85CF_u4E86navigationBar_u4E4B_u540Epush_u4E00_u4E2AViewController_2C_u9891_u7E41_u7684_u8FDB_u884C_u53F3_u6ED1_u4F46_u4E0D_u8FD4_u56DE_u64CD_u4F5C_uFF0C_u518Dpush_u5230_u4E00_u4E2A_u65B0_u9875_u9762_u4E4B_u540E_uFF0C_u4F1A_u51FA_u73B0_u4E0B_u4E00_u4E2AViewcontroller_u7684navigationBar_u662F_u4E0A_u4E00_u4E2AViewController_u7684navigationBar_uFF0C_u65E0_u6CD5_u9000_u51FA_u9875_u9762_uFF0C_u4E0A_u4E00_u4E2AViewController_u53D8_u6210_u91CE_u6307_u9488_uFF0C_u5BFC_u81F4crash" class="headerlink" title="&#x9690;&#x85CF;&#x4E86;navigationBar&#x4E4B;&#x540E;push&#x4E00;&#x4E2A;ViewController,&#x9891;&#x7E41;&#x7684;&#x8FDB;&#x884C;&#x53F3;&#x6ED1;&#x4F46;&#x4E0D;&#x8FD4;&#x56DE;&#x64CD;&#x4F5C;&#xFF0C;&#x518D;push&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x9875;&#x9762;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x4E00;&#x4E2A;Viewcontroller&#x7684;navigationBar&#x662F;&#x4E0A;&#x4E00;&#x4E2A;ViewController&#x7684;navigationBar&#xFF0C;&#x65E0;&#x6CD5;&#x9000;&#x51FA;&#x9875;&#x9762;&#xFF0C;&#x4E0A;&#x4E00;&#x4E2A;ViewController&#x53D8;&#x6210;&#x91CE;&#x6307;&#x9488;&#xFF0C;&#x5BFC;&#x81F4;crash"></a>&#x9690;&#x85CF;&#x4E86;navigationBar&#x4E4B;&#x540E;push&#x4E00;&#x4E2A;ViewController,&#x9891;&#x7E41;&#x7684;&#x8FDB;&#x884C;&#x53F3;&#x6ED1;&#x4F46;&#x4E0D;&#x8FD4;&#x56DE;&#x64CD;&#x4F5C;&#xFF0C;&#x518D;push&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x9875;&#x9762;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x4E00;&#x4E2A;Viewcontroller&#x7684;navigationBar&#x662F;&#x4E0A;&#x4E00;&#x4E2A;ViewController&#x7684;navigationBar&#xFF0C;&#x65E0;&#x6CD5;&#x9000;&#x51FA;&#x9875;&#x9762;&#xFF0C;&#x4E0A;&#x4E00;&#x4E2A;ViewController&#x53D8;&#x6210;&#x91CE;&#x6307;&#x9488;&#xFF0C;&#x5BFC;&#x81F4;crash</h3><p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+
+    //&#x4F7F;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x9690;&#x85CF;present&#x4E00;&#x4E2A;VC&#x4F1A;&#x51FA;&#x73B0;navigationBar&#x6389;&#x4E0B;&#x53BB;&#x7684;&#x611F;&#x89C9; &#xFF0C;push&#x8FDB;&#x53BB;&#x7684;&#x9891;&#x7E41;&#x53F3;&#x6ED1;&#x4E0D;&#x8FD4;&#x56DE;&#x4F1A;crash
+    //self.navigationController?.navigationBarHidden = true
+
+    //&#x91C7;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x9690;&#x85CF;
+    self.navigationController?.setNavigationBarHidden(true, animated: animated)
+}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/17/iOS右滑手势/" data-id="cin3x1eo40009xcs6y8zdh28c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-带sectionHeaderView的UICollectionView" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/10/带sectionHeaderView的UICollectionView/" class="article-date">
@@ -126,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="cimulfzcx0002h427a822bfph" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="cin3x1eni0002xcs6eyqey5jg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cimulfzd30005h427vmzyctfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cin3x1enp0005xcs636vxun5g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +281,7 @@ self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></ta
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="cimulfzdr000bh4279q062jaz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="cin3x1eod000cxcs629uavbnz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +397,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cimulfzcl0000h427rl9dpkus" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cin3x1en80000xcs6s5wgk0ux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +526,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cimulfzdc0006h427bjsgdcjf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cin3x1enx0006xcs6xn4b8vhu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -547,7 +611,7 @@ self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cimulfzcu0001h427n9prge3t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cin3x1eng0001xcs6wl5dtlxp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -628,7 +692,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cimulfzcz0003h427wv7codt3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cin3x1enk0003xcs6zlnou6ke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -665,7 +729,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cimulfzd10004h427ora1s2px" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cin3x1enm0004xcs692zjl3oh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -705,47 +769,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cimulfzdh0008h427copoii3r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-iOS使用RSBarcodes开发扫码功能" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/" class="article-date">
-  <time datetime="2016-02-21T08:43:03.000Z" itemprop="datePublished">2016-02-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/">iOS使用RSBarcodes开发扫码功能</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019"><a href="#pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019" class="headerlink" title="pod &#x2018;RSBarcodes&#x2019;, &#x2018;~&gt; 0.1&#x2019;"></a>pod &#x2018;RSBarcodes&#x2019;, &#x2018;~&gt; 0.1&#x2019;</h3><h3 id="u7EE7_u627F_RSScannerViewController"><a href="#u7EE7_u627F_RSScannerViewController" class="headerlink" title="&#x7EE7;&#x627F; RSScannerViewController"></a>&#x7EE7;&#x627F; RSScannerViewController</h3><h3 id="u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A"><a href="#u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x626B;&#x7801;&#x7684;view&#xFF0C;&#x5728;&#x626B;&#x7801;&#x7684;&#x4E2D;&#x95F4;&#x6316;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;view&#xFF0C;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;view&#x52A0;&#x5728;highlightView&#x4E0A;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x626B;&#x7801;&#x7684;view&#xFF0C;&#x5728;&#x626B;&#x7801;&#x7684;&#x4E2D;&#x95F4;&#x6316;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;view&#xFF0C;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;view&#x52A0;&#x5728;highlightView&#x4E0A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (void)drawRect:(CGRect)rect</span><br><span class="line">{</span><br><span class="line">    [[[UIColor blackColor] colorWithAlphaComponent:<span class="number">0.5</span>] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(rect);</span><br><span class="line">    CGRect rect1 = CGRectMake((rect.size.width - centerWidth)/<span class="number">2</span>, (rect.size.height - centerWidth)/<span class="number">2</span>, centerWidth, centerWidth);</span><br><span class="line">    CGRect centerRectInstersection = CGRectIntersection(rect1, rect);</span><br><span class="line">    [[UIColor clearColor] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(centerRectInstersection);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h3 id="u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03"><a href="#u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03" class="headerlink" title="&#x626B;&#x7801;&#x8FC7;&#x7A0B;&#x662F;&#x4F7F;&#x7528;block&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x56DE;&#x8C03;"></a>&#x626B;&#x7801;&#x8FC7;&#x7A0B;&#x662F;&#x4F7F;&#x7528;block&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x56DE;&#x8C03;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@weakify(self)</span><br><span class="line">self.barcodesHandler = ^(NSArray *barcodeObjects){</span><br><span class="line">    @strongify(self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (self.readed == NO) {</span><br><span class="line">        self.readed = YES;</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^{</span><br><span class="line"></span><br><span class="line">        	//&#x626B;&#x7801;&#x6210;&#x529F;&#x8C03;&#x7528;</span><br><span class="line">            AVMetadataMachineReadableCodeObject *code = barcodeObjects.first;</span><br><span class="line">            <span class="keyword">if</span> (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(codeScanController:scanedCode:)]) {</span><br><span class="line">                [self.delegate codeScanController:self scanedCode:code.stringValue];</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></table></figure>
-<h3 id="viewDidLoad_u8BBE_u7F6EbarcodeType"><a href="#viewDidLoad_u8BBE_u7F6EbarcodeType" class="headerlink" title="viewDidLoad&#x8BBE;&#x7F6E;barcodeType"></a>viewDidLoad&#x8BBE;&#x7F6E;barcodeType</h3><pre><code>AVMetadataObjectTypeQRCode&#x4E3A;&#x4E8C;&#x7EF4;&#x7801;type
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	- (void)viewDidLoad {</span><br><span class="line">    //super viewDidLoad &#x8BBE;&#x7F6E;barcodeType, &#x5B50;&#x7C7B;&#x9700;&#x8981;&#x5148;&#x8BBE;&#x5B9A;&#x7C7B;&#x578B;&#x518D;&#x8C03;&#x7528;super,&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4EC5;&#x626B;&#x63CF;&#x6761;&#x5F62;&#x7801;</span><br><span class="line">    self.barcodeObjectTypes = @[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cimulfzdo000ah4272p74lknb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cin3x1eo10008xcs6vromb1qg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -774,7 +798,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -784,6 +808,10 @@ if(cacheArray.count &gt; 0 ) {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/17/iOS右滑手势/">iOS右滑手势</a>
+          </li>
         
           <li>
             <a href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
@@ -799,10 +827,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/03/20/CAAnimation-常用的keyPath整理/">CAAnimation 常用的keyPath整理</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/13/使用CALayer中的mask属性绘图和动画/">使用CALayer中的mask属性绘图和动画</a>
           </li>
         
       </ul>

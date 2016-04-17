@@ -61,6 +61,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS使用RSBarcodes开发扫码功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/" class="article-date">
+  <time datetime="2016-02-21T08:43:03.000Z" itemprop="datePublished">2016-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/21/iOS使用RSBarcodes开发扫码功能/">iOS使用RSBarcodes开发扫码功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019"><a href="#pod__u2018RSBarcodes_u2019_2C__u2018_7E_26gt_3B_0-1_u2019" class="headerlink" title="pod &#x2018;RSBarcodes&#x2019;, &#x2018;~&gt; 0.1&#x2019;"></a>pod &#x2018;RSBarcodes&#x2019;, &#x2018;~&gt; 0.1&#x2019;</h3><h3 id="u7EE7_u627F_RSScannerViewController"><a href="#u7EE7_u627F_RSScannerViewController" class="headerlink" title="&#x7EE7;&#x627F; RSScannerViewController"></a>&#x7EE7;&#x627F; RSScannerViewController</h3><h3 id="u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A"><a href="#u81EA_u5B9A_u4E49_u4E00_u4E2A_u626B_u7801_u7684view_uFF0C_u5728_u626B_u7801_u7684_u4E2D_u95F4_u6316_u4E00_u4E2A_u900F_u660E_u7684view_uFF0C_u5C06_u81EA_u5B9A_u4E49_u7684view_u52A0_u5728highlightView_u4E0A" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x626B;&#x7801;&#x7684;view&#xFF0C;&#x5728;&#x626B;&#x7801;&#x7684;&#x4E2D;&#x95F4;&#x6316;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;view&#xFF0C;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;view&#x52A0;&#x5728;highlightView&#x4E0A;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x626B;&#x7801;&#x7684;view&#xFF0C;&#x5728;&#x626B;&#x7801;&#x7684;&#x4E2D;&#x95F4;&#x6316;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;view&#xFF0C;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;view&#x52A0;&#x5728;highlightView&#x4E0A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (void)drawRect:(CGRect)rect</span><br><span class="line">{</span><br><span class="line">    [[[UIColor blackColor] colorWithAlphaComponent:<span class="number">0.5</span>] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(rect);</span><br><span class="line">    CGRect rect1 = CGRectMake((rect.size.width - centerWidth)/<span class="number">2</span>, (rect.size.height - centerWidth)/<span class="number">2</span>, centerWidth, centerWidth);</span><br><span class="line">    CGRect centerRectInstersection = CGRectIntersection(rect1, rect);</span><br><span class="line">    [[UIColor clearColor] <span class="built_in">set</span>Fill];</span><br><span class="line">    UIRectFill(centerRectInstersection);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03"><a href="#u626B_u7801_u8FC7_u7A0B_u662F_u4F7F_u7528block_u8FDB_u884C_u5B9E_u73B0_u56DE_u8C03" class="headerlink" title="&#x626B;&#x7801;&#x8FC7;&#x7A0B;&#x662F;&#x4F7F;&#x7528;block&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x56DE;&#x8C03;"></a>&#x626B;&#x7801;&#x8FC7;&#x7A0B;&#x662F;&#x4F7F;&#x7528;block&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x56DE;&#x8C03;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@weakify(self)</span><br><span class="line">self.barcodesHandler = ^(NSArray *barcodeObjects){</span><br><span class="line">    @strongify(self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (self.readed == NO) {</span><br><span class="line">        self.readed = YES;</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^{</span><br><span class="line"></span><br><span class="line">        	//&#x626B;&#x7801;&#x6210;&#x529F;&#x8C03;&#x7528;</span><br><span class="line">            AVMetadataMachineReadableCodeObject *code = barcodeObjects.first;</span><br><span class="line">            <span class="keyword">if</span> (self.delegate &amp;&amp; [self.delegate respondsToSelector:@selector(codeScanController:scanedCode:)]) {</span><br><span class="line">                [self.delegate codeScanController:self scanedCode:code.stringValue];</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<h3 id="viewDidLoad_u8BBE_u7F6EbarcodeType"><a href="#viewDidLoad_u8BBE_u7F6EbarcodeType" class="headerlink" title="viewDidLoad&#x8BBE;&#x7F6E;barcodeType"></a>viewDidLoad&#x8BBE;&#x7F6E;barcodeType</h3><pre><code>AVMetadataObjectTypeQRCode&#x4E3A;&#x4E8C;&#x7EF4;&#x7801;type
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	- (void)viewDidLoad {</span><br><span class="line">    //super viewDidLoad &#x8BBE;&#x7F6E;barcodeType, &#x5B50;&#x7C7B;&#x9700;&#x8981;&#x5148;&#x8BBE;&#x5B9A;&#x7C7B;&#x578B;&#x518D;&#x8C03;&#x7528;super,&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4EC5;&#x626B;&#x63CF;&#x6761;&#x5F62;&#x7801;</span><br><span class="line">    self.barcodeObjectTypes = @[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cin3x1eob000bxcs6kf0ociuy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-iOS动画" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/03/iOS动画/" class="article-date">
@@ -89,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cimulfzdl0009h427pztun8rw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cin3x1eo7000axcs6j88d2yn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cimulfzdf0007h4278ae99ycc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cin3x1enz0007xcs6xsl7b8j9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cimulfzdz000ch427ekxl4bic" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cin3x1eok000dxcs6e1md7la5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +243,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -213,6 +253,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/17/iOS右滑手势/">iOS右滑手势</a>
+          </li>
         
           <li>
             <a href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
@@ -228,10 +272,6 @@
         
           <li>
             <a href="/2016/03/20/CAAnimation-常用的keyPath整理/">CAAnimation 常用的keyPath整理</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/13/使用CALayer中的mask属性绘图和动画/">使用CALayer中的mask属性绘图和动画</a>
           </li>
         
       </ul>
