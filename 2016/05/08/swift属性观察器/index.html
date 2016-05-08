@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS仿射变换学习－1 | Hello</title>
+  <title>swift属性观察器 | Hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x4EFF;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
+  <meta name="description" content="OC&amp;#x91CC;&amp;#x9762;&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x5199;&amp;#x5C5E;&amp;#x6027;&amp;#x7684;get&amp;#x548C;set&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;swift&amp;#x91CC;&amp;#x6CA1;&amp;#x6709;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5199;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4F46;&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS仿射变换学习－1">
-<meta property="og:url" content="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/index.html">
+<meta property="og:title" content="swift属性观察器">
+<meta property="og:url" content="http://yoursite.com/2016/05/08/swift属性观察器/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="&amp;#x4EFF;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
-<meta property="og:image" content="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/transform1.png">
-<meta property="og:updated_time" content="2016-04-10T13:03:38.000Z">
+<meta property="og:description" content="OC&amp;#x91CC;&amp;#x9762;&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x5199;&amp;#x5C5E;&amp;#x6027;&amp;#x7684;get&amp;#x548C;set&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;swift&amp;#x91CC;&amp;#x6CA1;&amp;#x6709;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5199;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4F46;&amp;#x">
+<meta property="og:updated_time" content="2016-05-08T06:30:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS仿射变换学习－1">
-<meta name="twitter:description" content="&amp;#x4EFF;&amp;#x5C04;&amp;#x53D8;&amp;#x6362;UIView&amp;#x7684;transform&amp;#x662F;CGAffineTransform&amp;#x7C7B;&amp;#x578B;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;&amp;#x4E8C;&amp;#x7EF4;&amp;#x7A7A;&amp;#x95F4;&amp;#x505A;&amp;#x5E73;&amp;#x79FB;&amp;#xFF0C;&amp;#x7F29;">
+<meta name="twitter:title" content="swift属性观察器">
+<meta name="twitter:description" content="OC&amp;#x91CC;&amp;#x9762;&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x5199;&amp;#x5C5E;&amp;#x6027;&amp;#x7684;get&amp;#x548C;set&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;swift&amp;#x91CC;&amp;#x6CA1;&amp;#x6709;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5199;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4F46;&amp;#x">
   
     <link rel="alternative" href="/atom.xml" title="Hello" type="application/atom+xml">
   
@@ -61,10 +60,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-iOS仿射变换学习－1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-swift属性观察器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/27/iOS仿射变换学习－1/" class="article-date">
-  <time datetime="2016-03-27T12:37:44.000Z" itemprop="datePublished">2016-03-27</time>
+    <a href="/2016/05/08/swift属性观察器/" class="article-date">
+  <time datetime="2016-05-08T06:22:52.000Z" itemprop="datePublished">2016-05-08</time>
 </a>
     
   </div>
@@ -75,7 +74,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      iOS仿射变换学习－1
+      swift属性观察器
     </h1>
   
 
@@ -83,22 +82,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="u4EFF_u5C04_u53D8_u6362"><a href="#u4EFF_u5C04_u53D8_u6362" class="headerlink" title="&#x4EFF;&#x5C04;&#x53D8;&#x6362;"></a>&#x4EFF;&#x5C04;&#x53D8;&#x6362;</h3><p>UIView&#x7684;transform&#x662F;CGAffineTransform&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x505A;&#x5E73;&#x79FB;&#xFF0C;&#x7F29;&#x653E;&#xFF0C;&#x65CB;&#x8F6C;<br>&#x521D;&#x59CB;&#x5316; CGAffineTransform transform = CGAffineTransformIdentity</p>
-<p>CGAffineTransformIdentity &#x503C;&#x662F;/<em> The identity transform: [ 1 0 0 1 0 0 ]. </em>/;</p>
-<p>CGAffineTransform transform  = CGAffineTransformMake(CGFloat a,CGFloat b,</p>
-<p>CGFloat c,CGFloa td,CGFloat tx,CGFloat ty)</p>
-<p>&#x77E9;&#x9635;&#x7B97;&#x6CD5;&#x516C;&#x5F0F;&#xFF1A;</p>
-<p><img src="/2016/03/27/iOS&#x4EFF;&#x5C04;&#x53D8;&#x6362;&#x5B66;&#x4E60;&#xFF0D;1/transform1.png" alt="transform1"></p>
-<h3 id="u521B_u5EFA_u4E00_u4E2ACGAffineTransform"><a href="#u521B_u5EFA_u4E00_u4E2ACGAffineTransform" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGAffineTransform</h3><p>Core Graphics&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;CGAffineTransform&#x5B9E;&#x4F8B;&#xFF1A;</p>
-<p>&#x65CB;&#x8F6C; &#xFF0D; CGAffineTransformMakeRotation(CGFloat angle)<br>&#x7F29;&#x653E; &#xFF0D; CGAffineTransformMakeScale(CGFloat sx, CGFloat sy)<br>&#x5E73;&#x79FB; &#xFF0D; CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)</p>
-<p>CALayer&#x4E5F;&#x6709;&#x4E00;&#x4E2A;transform&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F;CATransform3D<br>CALayer&#x5BF9;&#x5E94;&#x4E8E;UIView&#x7684;transform&#x5C5E;&#x6027;&#x53EB;&#x505A;affineTransform</p>
-<p>&#x4F8B;&#x5982;&#x5BF9; &#x56FE;&#x5C42;&#x65CB;&#x8F6C;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI_4);
-self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></table></figure></p>
+        <p>OC&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x7684;get&#x548C;set&#x65B9;&#x6CD5;&#xFF0C;swift&#x91CC;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x4F46;&#x6709;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;<br>&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x4F1A;&#x76D1;&#x63A7;&#x548C;&#x54CD;&#x5E94;&#x5C5E;&#x6027;&#x503C;&#x53D8;&#x5316;&#xFF0C;&#x6BCF;&#x6B21;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x503C;&#x65F6;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;</p>
+<p>swift&#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;:</p>
+<ul>
+<li><figure class="highlight"><figcaption><span>&#x5728;&#x65B0;&#x7684;&#x503C;&#x5373;&#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x8FD8;&#x6CA1;&#x8BBE;&#x7F6E;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* ```didSet```  &#x5728;&#x65B0;&#x7684;&#x503C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#x8C03;&#x7528;
+
+```willSet```&#x4F1A;&#x5C06;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x5219;&#x4E3A;```newValue</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
+</span><br></pre></td></tr></table></figure>
+<p>class StepCounter {<br>    var totalSteps: Int = 0 {<br>        willSet(newTotalSteps) {<br>            print(&#x201C; (newTotalSteps)&#x201D;)<br>        }<br>        didSet {<br>            if totalSteps &gt; oldValue  {<br>                print(&#x201C;Added (totalSteps - oldValue) steps&#x201D;)<br>            }<br>        }<br>    }<br>}<br>let stepCounter = StepCounter()<br>stepCounter.totalSteps = 200<br>//  200<br>//  200 steps<br>stepCounter.totalSteps = 360<br>//  360<br>// 160 steps<br>```</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="ciny7azzn000edgs6oug4e3wv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/08/swift属性观察器/" data-id="ciny7azz70008dgs61celj0xa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -107,19 +106,10 @@ self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></ta
     
 <nav id="article-nav">
   
-    <a href="/2016/04/03/使用Energy-Diagnostics性能测试/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          使用Energy Diagnostics性能测试
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/20/CAAnimation-常用的keyPath整理/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/05/01/使用NJKWebViewProgress做webView的进度条/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CAAnimation 常用的keyPath整理</div>
+      <div class="article-nav-title">使用NJKWebViewProgress做webView的进度条</div>
     </a>
   
 </nav>

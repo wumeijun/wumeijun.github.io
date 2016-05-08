@@ -61,6 +61,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-swift属性观察器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/08/swift属性观察器/" class="article-date">
+  <time datetime="2016-05-08T06:22:52.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/08/swift属性观察器/">swift属性观察器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>OC&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x7684;get&#x548C;set&#x65B9;&#x6CD5;&#xFF0C;swift&#x91CC;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x4F46;&#x6709;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;<br>&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x4F1A;&#x76D1;&#x63A7;&#x548C;&#x54CD;&#x5E94;&#x5C5E;&#x6027;&#x503C;&#x53D8;&#x5316;&#xFF0C;&#x6BCF;&#x6B21;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x503C;&#x65F6;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;</p>
+<p>swift&#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;:</p>
+<ul>
+<li><figure class="highlight"><figcaption><span>&#x5728;&#x65B0;&#x7684;&#x503C;&#x5373;&#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x8FD8;&#x6CA1;&#x8BBE;&#x7F6E;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* ```didSet```  &#x5728;&#x65B0;&#x7684;&#x503C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#x8C03;&#x7528;
+
+```willSet```&#x4F1A;&#x5C06;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x5219;&#x4E3A;```newValue</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
+</span><br></pre></td></tr></table></figure>
+<p>class StepCounter {<br>    var totalSteps: Int = 0 {<br>        willSet(newTotalSteps) {<br>            print(&#x201C; (newTotalSteps)&#x201D;)<br>        }<br>        didSet {<br>            if totalSteps &gt; oldValue  {<br>                print(&#x201C;Added (totalSteps - oldValue) steps&#x201D;)<br>            }<br>        }<br>    }<br>}<br>let stepCounter = StepCounter()<br>stepCounter.totalSteps = 200<br>//  200<br>//  200 steps<br>stepCounter.totalSteps = 360<br>//  360<br>// 160 steps<br>```</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/08/swift属性观察器/" data-id="ciny7azz70008dgs61celj0xa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用NJKWebViewProgress做webView的进度条" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/01/使用NJKWebViewProgress做webView的进度条/" class="article-date">
@@ -130,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/01/使用NJKWebViewProgress做webView的进度条/" data-id="cinokz0xk0005l7s6jux79y7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/01/使用NJKWebViewProgress做webView的进度条/" data-id="ciny7azyr0005dgs6le685lib" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +248,7 @@ func authorizeHealthKit() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/22/HealthKit学习/" data-id="cinokz0ym000fl7s69u1kxw7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/22/HealthKit学习/" data-id="ciny7azzx000gdgs6v17dzilg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +312,7 @@ func authorizeHealthKit() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/17/iOS右滑手势/" data-id="cinokz0y7000al7s6h4bhqr84" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/17/iOS右滑手势/" data-id="ciny7azzf000bdgs638sbizky" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +387,7 @@ func authorizeHealthKit() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="cinokz0xf0002l7s6a3uct679" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/带sectionHeaderView的UICollectionView/" data-id="ciny7azyk0002dgs65okp6gc9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +431,7 @@ func authorizeHealthKit() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="cinokz0xn0006l7s6hndqepkn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/使用Energy-Diagnostics性能测试/" data-id="ciny7azyu0006dgs63o41l4d2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +478,7 @@ self.layerView.layer.affineTransform = transform;</span><br></pre></td></tr></ta
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="cinokz0yd000dl7s6spphp7e8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/27/iOS仿射变换学习－1/" data-id="ciny7azzn000edgs6oug4e3wv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -547,7 +594,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="cinokz0x30000l7s6zlcnmfq2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/20/CAAnimation-常用的keyPath整理/" data-id="ciny7azyb0000dgs6bbktklj0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -676,7 +723,7 @@ view.layer.mask = layer;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="cinokz0xx0007l7s6rdso7ckz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/13/使用CALayer中的mask属性绘图和动画/" data-id="ciny7azz40007dgs6iymovtv4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -761,88 +808,7 @@ self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cinokz0xc0001l7s6k20f16a6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-实现NSCoding协议对自定义对象的存储" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/27/实现NSCoding协议对自定义对象的存储/" class="article-date">
-  <time datetime="2016-02-27T02:09:19.000Z" itemprop="datePublished">2016-02-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/27/实现NSCoding协议对自定义对象的存储/">实现NSCoding协议对自定义对象的存储</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>&#x672C;&#x5468;&#x505A;&#x9879;&#x76EE;&#x65F6;&#x5019;&#x7F13;&#x5B58;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x62A5;&#x201C;Attempt to set a non-property-list object&#x201D;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;
-
-&#x4E00;&#x67E5;&#x53D1;&#x73B0;oc&#x53EF;&#x4EE5;&#x5BF9; NSDate, NSNumber, NSString, NSArray, or NSDictionary&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x201C;&#x7F16;&#x7801;/&#x89E3;&#x7801;&#x201D;&#x7684;&#x64CD;&#x4F5C;
-
-&#x5BF9;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;
-
-&#x9644;&#x4E0A;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x94FE;&#x63A5;&#xFF1A;http://stackoverflow.com/questions/19720611/attempt-to-set-a-non-property-list-object-as-an-nsuserdefaults
-</code></pre><h3 id="u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE"><a href="#u81EA_u5B9A_u4E49_u7684_u5BF9_u8C61_u5B9E_u73B0NSCoding_u534F_u8BAE" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;NSCoding&#x534F;&#x8BAE;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class FLMealAddRecordDisplayItem: NSObject,NSCoding {
-
-    var data:RECORD_EATING_DATA!
-    var sectionName:String!
-    var tabSelectIndex:Int!
-
-    required init(data:RECORD_EATING_DATA, sectionName:String,tabSelectIndex:Int) {
-    	super.init()
-        self.data = data
-        self.sectionName = sectionName
-        self.tabSelectIndex = tabSelectIndex
-    }
-
-    //&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#xFF1A;&#x5C06;&#x6570;&#x636E;&#x7F16;&#x7801;&#x6210;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x672C;&#x5730;&#x7684;&#x72B6;&#x6001;
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(self.data, forKey: &quot;data&quot;)
-        aCoder.encodeObject(self.sectionName, forKey: &quot;sectionName&quot;)
-        aCoder.encodeObject(self.tabSelectIndex, forKey: &quot;tabSelectIndex&quot;)
-    }
-
-
-    //MARK: &#x89E3;&#x7801;&#x65B9;&#x6CD5;
-    required init(coder aDecoder: NSCoder) {
-        self.data = aDecoder.decodeObjectForKey(&quot;data&quot;) as! RECORD_EATING_DATA
-        self.sectionName = aDecoder.decodeObjectForKey(&quot;sectionName&quot;) as! String
-        self.tabSelectIndex = aDecoder.decodeObjectForKey(&quot;tabSelectIndex&quot;) as! Int
-
-    }
-}</span><br></pre></td></tr></table></figure>
-<h3 id="u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730"><a href="#u5F52_u6863_u5B58_u653E_u8FD9_u4E9B_u5BF9_u8C61_u7684_u6570_u7EC4_uFF0C_u5B58_u5165_u672C_u5730" class="headerlink" title="&#x5F52;&#x6863;&#x5B58;&#x653E;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x5165;&#x672C;&#x5730;"></a>&#x5F52;&#x6863;&#x5B58;&#x653E;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x5165;&#x672C;&#x5730;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
-[[NSUserDefaults standardUserDefaults] setObject:data forKey:timeType];</span><br></pre></td></tr></table></figure>
-<h3 id="u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E"><a href="#u53CD_u5F52_u6863_uFF0C_u53D6_u51FA_u6570_u636E" class="headerlink" title="&#x53CD;&#x5F52;&#x6863;&#xFF0C;&#x53D6;&#x51FA;&#x6570;&#x636E;"></a>&#x53CD;&#x5F52;&#x6863;&#xFF0C;&#x53D6;&#x51FA;&#x6570;&#x636E;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
-NSArray *array = [[NSArray alloc] init];
-NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:timeType];
-NSArray *cacheArray = [NSKeyedUnarchiver unarchiveObjectWithData:cacheData];
-if(cacheArray.count &gt; 0 ) {
-    array = cacheArray;
-}</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cinokz0xg0003l7s6apxoh1k2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="ciny7azyi0001dgs658t539r8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -871,7 +837,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -881,6 +847,10 @@ if(cacheArray.count &gt; 0 ) {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/08/swift属性观察器/">swift属性观察器</a>
+          </li>
         
           <li>
             <a href="/2016/05/01/使用NJKWebViewProgress做webView的进度条/">使用NJKWebViewProgress做webView的进度条</a>
@@ -896,10 +866,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/03/使用Energy-Diagnostics性能测试/">使用Energy Diagnostics性能测试</a>
           </li>
         
       </ul>
