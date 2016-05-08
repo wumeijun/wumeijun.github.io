@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/08/swift属性观察器/index.html">
 <meta property="og:site_name" content="Hello">
 <meta property="og:description" content="OC&amp;#x91CC;&amp;#x9762;&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x5199;&amp;#x5C5E;&amp;#x6027;&amp;#x7684;get&amp;#x548C;set&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;swift&amp;#x91CC;&amp;#x6CA1;&amp;#x6709;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5199;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4F46;&amp;#x">
-<meta property="og:updated_time" content="2016-05-08T06:30:54.000Z">
+<meta property="og:updated_time" content="2016-05-08T06:32:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swift属性观察器">
 <meta name="twitter:description" content="OC&amp;#x91CC;&amp;#x9762;&amp;#x53EF;&amp;#x4EE5;&amp;#x91CD;&amp;#x5199;&amp;#x5C5E;&amp;#x6027;&amp;#x7684;get&amp;#x548C;set&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;swift&amp;#x91CC;&amp;#x6CA1;&amp;#x6709;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5199;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4F46;&amp;#x">
@@ -85,19 +85,35 @@
         <p>OC&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x5C5E;&#x6027;&#x7684;get&#x548C;set&#x65B9;&#x6CD5;&#xFF0C;swift&#x91CC;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x4F46;&#x6709;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;<br>&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;&#x4F1A;&#x76D1;&#x63A7;&#x548C;&#x54CD;&#x5E94;&#x5C5E;&#x6027;&#x503C;&#x53D8;&#x5316;&#xFF0C;&#x6BCF;&#x6B21;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x503C;&#x65F6;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;</p>
 <p>swift&#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x5C5E;&#x6027;&#x89C2;&#x5BDF;&#x5668;:</p>
 <ul>
-<li><figure class="highlight"><figcaption><span>&#x5728;&#x65B0;&#x7684;&#x503C;&#x5373;&#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x8FD8;&#x6CA1;&#x8BBE;&#x7F6E;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* ```didSet```  &#x5728;&#x65B0;&#x7684;&#x503C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#x8C03;&#x7528;
-
-```willSet```&#x4F1A;&#x5C06;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x5219;&#x4E3A;```newValue</span><br></pre></td></tr></table></figure>
-</li>
+<li>willSet &#x5728;&#x65B0;&#x7684;&#x503C;&#x5373;&#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x8FD8;&#x6CA1;&#x8BBE;&#x7F6E;</li>
+<li>didSet  &#x5728;&#x65B0;&#x7684;&#x503C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#x8C03;&#x7528;</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">
-</span><br></pre></td></tr></table></figure>
-<p>class StepCounter {<br>    var totalSteps: Int = 0 {<br>        willSet(newTotalSteps) {<br>            print(&#x201C; (newTotalSteps)&#x201D;)<br>        }<br>        didSet {<br>            if totalSteps &gt; oldValue  {<br>                print(&#x201C;Added (totalSteps - oldValue) steps&#x201D;)<br>            }<br>        }<br>    }<br>}<br>let stepCounter = StepCounter()<br>stepCounter.totalSteps = 200<br>//  200<br>//  200 steps<br>stepCounter.totalSteps = 360<br>//  360<br>// 160 steps<br>```</p>
+<p>willSet&#x4F1A;&#x5C06;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x5219;&#x4E3A;newValue</p>
+<p>didSet&#x5219;&#x662F;&#x5C06;&#x65E7;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x540D;&#x79F0;&#x5219;&#x4E3A;oldValue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print(&quot; \(newTotalSteps)&quot;)
+        }
+        didSet {
+            if totalSteps &gt; oldValue  {
+                print(&quot;Added \(totalSteps - oldValue) steps&quot;)
+            }
+        }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+//  200
+//  200 steps
+stepCounter.totalSteps = 360
+//  360
+// 160 steps</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/08/swift属性观察器/" data-id="ciny7azz70008dgs61celj0xa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/08/swift属性观察器/" data-id="ciny7dfci0008e5s6z1sur2il" class="article-share-link">Share</a>
       
       
     </footer>
