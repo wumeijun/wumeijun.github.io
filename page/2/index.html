@@ -61,6 +61,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-模拟逐字输入文字的效果" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/06/模拟逐字输入文字的效果/" class="article-date">
+  <time datetime="2016-03-06T09:30:35.000Z" itemprop="datePublished">2016-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/06/模拟逐字输入文字的效果/">模拟逐字输入文字的效果</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iOS7&#x4EE5;&#x540E;NSString&#x7C7B;&#x589E;&#x52A0;&#x4E86;2&#x4E2A;&#x7ED8;&#x5236;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;</p>
+<ul>
+<li>drawAtPoint:withAttributes:</li>
+<li>drawInRect:withAttributes:</li>
+</ul>
+<p>&#x4F7F;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#x52A0;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED8;&#x5236;&#x65B9;&#x6CD5;&#x6A21;&#x62DF;&#x5199;&#x5B57;&#x7684;&#x8FC7;&#x7A0B;</p>
+<ul>
+<li>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#x548C;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.title = @&quot;&#x6211;&#x662F;&#x4E00;&#x6761;&#x9C7C;&#x554A;&#x554A;&#x554A;&#x554A;&#xFF0C;&#x53EF;&#x7231;&#x7684;&#x9C7C;&#x554A;&#xFF0C;&#x6211;&#x662F;&#x4E00;&#x6761;&#x9C7C;&#x554A;&#x554A;&#x554A;&#x554A;&#xFF0C;&#x53EF;&#x7231;&#x7684;&#x9C7C;&#x554A;,&#x6211;&#x662F;&#x4E00;&#x6761;&#x9C7C;&#x554A;&#x554A;&#x554A;&#x554A;&#xFF0C;&#x53EF;&#x7231;&#x7684;&#x9C7C;&#x554A;&#xFF0C;&#x6211;&#x662F;&#x4E00;&#x6761;&#x9C7C;&#x554A;&#x554A;&#x554A;&#x554A;&#xFF0C;&#x53EF;&#x7231;&#x7684;&#x9C7C;&#x554A;&quot;;
+
+self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateCurrentString) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x6BCF;&#x6B21;&#x53D6;&#x51FA;&#x8981;&#x663E;&#x793A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F9D;&#x6B21;&#x9012;&#x589E;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentString
+{
+    static  NSInteger m = 1;
+    if (m &lt;= self.title.length) {
+
+        self.currentString = [self.title substringWithRange:NSMakeRange(0,m)];
+        m++;
+        //&#x8C03;&#x7528;drawRect:(CGRect)rect&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7ED8;&#x5236;
+        [self setNeedsDisplay];
+    }else {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x6BCF;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#x5148;&#x6E05;&#x9664;&#x753B;&#x5E03;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x73B0;&#x6296;&#x52A8;<br>&#x7B2C;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x663E;&#x793A;&#x5934;2&#x5B57;&#xFF0C;&#x89C6;&#x89C9;&#x4E0A;&#x9020;&#x6210;&#x662F;&#x9010;&#x5B57;&#x663E;&#x793A;&#x4E00;&#x6837;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawRect:(CGRect)rect {
+
+    //&#x83B7;&#x53D6;&#x4E0A;&#x4E0B;&#x6587;
+    CGContextRef ctxxx = UIGraphicsGetCurrentContext();
+    //&#x6E05;&#x9664;&#x753B;&#x5E03;
+    CGContextClearRect(ctxxx, rect);
+
+    UIFont *font = [UIFont systemFontOfSize:17];
+    UIColor *color = [UIColor redColor];
+    NSDictionary *dic = @{
+                          NSForegroundColorAttributeName:color,
+                          NSFontAttributeName:font
+                          };
+
+    [self.currentString drawInRect:CGRectMake(10, 10, 110, 190) withAttributes:dic];
+
+}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/06/模拟逐字输入文字的效果/" data-id="cipazlhd30001efs61e8jf5pu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-实现NSCoding协议对自定义对象的存储" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/27/实现NSCoding协议对自定义对象的存储/" class="article-date">
@@ -132,7 +217,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="ciny7dfc00003e5s65vwalntn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/27/实现NSCoding协议对自定义对象的存储/" data-id="cipazlhd70003efs6nt32p2wh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +254,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="ciny7dfc10004e5s66o92ljzq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/先present后再push的页面返回/" data-id="cipazlhd90004efs6g0rf3b4f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +294,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="ciny7dfcm000ae5s6ysc4jirx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/swift中AnyObject调用OC方法/" data-id="cipazlhdy000aefs64ftecoya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +334,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="ciny7dfct000de5s6wfpb5qln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/21/iOS使用RSBarcodes开发扫码功能/" data-id="cipazlhe9000eefs6zo5p2j6b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +372,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="ciny7dfcq000ce5s6875wlrkm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/03/iOS动画/" data-id="cipazlhe8000defs6kwyub30t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,7 +412,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="ciny7dfck0009e5s6fjzznxgc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/swift单例和闭包写法/" data-id="cipazlhdv0009efs6xxkgmuuv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,7 +457,7 @@ if(cacheArray.count &gt; 0 ) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="ciny7dfd1000fe5s6qisx6p48" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/31/hello-world/" data-id="cipazlhei000gefs6ygpgdeuj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -401,7 +486,7 @@ if(cacheArray.count &gt; 0 ) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -411,6 +496,10 @@ if(cacheArray.count &gt; 0 ) {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/06/11/pod升级到1-0-0之后出现问题/">pod升级到1.0.0之后出现问题</a>
+          </li>
         
           <li>
             <a href="/2016/05/08/swift属性观察器/">swift属性观察器</a>
@@ -426,10 +515,6 @@ if(cacheArray.count &gt; 0 ) {
         
           <li>
             <a href="/2016/04/17/iOS右滑手势/">iOS右滑手势</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/10/带sectionHeaderView的UICollectionView/">带sectionHeaderView的UICollectionView</a>
           </li>
         
       </ul>
